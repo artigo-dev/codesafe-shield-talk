@@ -1,0 +1,608 @@
+/* Demo `draft` (demos/draft.js): the fix, three checks, what is left. Big type, few words.
+   Violet the Shield's own kernel (the test), cyan codesafe's code, red what was dropped, green what
+   was kept, yellow what is written by hand. Motion follows the deck's speed: --k is 1 at ×0.1. */
+
+.demo[data-demo="draft"] .draft-board
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1680px;
+	height: 680px;
+	transform-origin: 0 0;
+	font-family: var(--display);
+	font-weight: 500;
+	color: var(--text);
+}
+
+.demo[data-demo="draft"] .column
+{
+	position: absolute;
+	height: 680px;
+}
+
+.demo[data-demo="draft"] .column > *
+{
+	position: absolute;
+}
+
+.demo[data-demo="draft"] .column > .col-title,
+.demo[data-demo="draft"] .column > .col-sub
+{
+	position: static;
+}
+
+.demo[data-demo="draft"] .col-title
+{
+	font-size: 34px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="draft"] .col-sub
+{
+	margin-top: 6px;
+	font-size: 22px;
+	color: var(--muted);
+}
+
+/* what appears: hidden until the plan shows it */
+
+.demo[data-demo="draft"] .fade
+{
+	opacity: 0;
+	transition: opacity calc(var(--k) * .5s) ease;
+}
+
+.demo[data-demo="draft"] .fade.on
+{
+	opacity: 1;
+}
+
+/* the fix: the bug in one line, the diff, the planted comment */
+
+.demo[data-demo="draft"] .bug,
+.demo[data-demo="draft"] .diff
+{
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--panel);
+}
+
+.demo[data-demo="draft"] .bug
+{
+	padding: 8px 16px 10px;
+	border-left: 4px solid var(--red);
+}
+
+.demo[data-demo="draft"] .bug-name
+{
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--accent);
+}
+
+.demo[data-demo="draft"] .bug-line
+{
+	font-size: 22px;
+	line-height: 1.2;
+}
+
+.demo[data-demo="draft"] .diff
+{
+	padding: 10px 0;
+}
+
+.demo[data-demo="draft"] .ln
+{
+	display: flex;
+	padding: 0 14px 0 8px;
+	font-family: var(--mono);
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 26px;
+	white-space: pre-wrap;
+}
+
+.demo[data-demo="draft"] .ln .mark
+{
+	flex: none;
+	width: 20px;
+}
+
+.demo[data-demo="draft"] .ln .code
+{
+	flex: 1;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.demo[data-demo="draft"] .ln.add
+{
+	background: color-mix(in srgb, var(--good) 10%, transparent);
+}
+
+.demo[data-demo="draft"] .ln.add .mark
+{
+	color: var(--good);
+}
+
+.demo[data-demo="draft"] .ln.del
+{
+	background: color-mix(in srgb, var(--red) 10%, transparent);
+	color: var(--muted);
+}
+
+.demo[data-demo="draft"] .ln.del .mark
+{
+	color: var(--red);
+}
+
+.demo[data-demo="draft"] .ln.steer .code
+{
+	color: var(--muted);
+}
+
+.demo[data-demo="draft"] .ln.steer.flag .code
+{
+	color: var(--text);
+	text-decoration: underline wavy var(--red);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 5px;
+}
+
+.demo[data-demo="draft"] .fooled
+{
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--red);
+}
+
+/* the three checks: a bar each, its number and its words over it */
+
+.demo[data-demo="draft"] .bar-label
+{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	align-items: center;
+	font-size: 21px;
+	font-weight: 600;
+	line-height: 1.1;
+	text-align: center;
+	transition: color calc(var(--k) * .3s);
+}
+
+.demo[data-demo="draft"] .bar-mark
+{
+	flex: none;
+	width: 30px;
+	height: 30px;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 26px;
+	text-align: center;
+}
+
+.demo[data-demo="draft"] .bar-label.active
+{
+	color: var(--accent);
+}
+
+.demo[data-demo="draft"] .bar-label.trial.active
+{
+	color: var(--violet);
+}
+
+.demo[data-demo="draft"] .bar-label.pass
+{
+	color: var(--good);
+}
+
+.demo[data-demo="draft"] .bar-label.fail
+{
+	color: var(--red);
+}
+
+.demo[data-demo="draft"] .bar
+{
+	width: 10px;
+	height: 196px;
+	border-radius: 5px;
+	opacity: .4;
+	transition: opacity calc(var(--k) * .3s), background-color calc(var(--k) * .3s), box-shadow calc(var(--k) * .3s);
+}
+
+.demo[data-demo="draft"] .bar.code
+{
+	background: var(--accent);
+}
+
+.demo[data-demo="draft"] .bar.kernel
+{
+	background: var(--violet);
+}
+
+.demo[data-demo="draft"] .bar.active
+{
+	opacity: 1;
+	box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.demo[data-demo="draft"] .bar.kernel.active
+{
+	box-shadow: 0 0 18px var(--violet);
+}
+
+.demo[data-demo="draft"] .bar.pass
+{
+	opacity: .9;
+	background: var(--good);
+}
+
+.demo[data-demo="draft"] .bar.fail
+{
+	opacity: 1;
+	background: var(--red);
+	box-shadow: 0 0 18px var(--red-glow);
+}
+
+/* a card: whose answer, written by hand, what its rule does */
+
+.demo[data-demo="draft"] .card
+{
+	z-index: 2;
+	padding: 10px 14px 12px;
+	border: 2px solid var(--border);
+	border-radius: 10px;
+	background: var(--panel);
+	opacity: 0;
+	transition: left calc(var(--k) * 1s) cubic-bezier(.3, .7, .3, 1), opacity calc(var(--k) * .5s), border-color calc(var(--k) * .3s), box-shadow calc(var(--k) * .3s);
+}
+
+.demo[data-demo="draft"] .card.in
+{
+	opacity: 1;
+}
+
+.demo[data-demo="draft"] .card.gone
+{
+	opacity: 0;
+}
+
+.demo[data-demo="draft"] .card.bad
+{
+	border-color: var(--red);
+	box-shadow: 0 0 20px var(--red-glow);
+}
+
+.demo[data-demo="draft"] .card.good
+{
+	border-color: var(--good);
+	box-shadow: 0 0 16px var(--good-glow);
+}
+
+.demo[data-demo="draft"] .card-head
+{
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+}
+
+.demo[data-demo="draft"] .card-n
+{
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.demo[data-demo="draft"] .scripted
+{
+	margin-left: auto;
+	padding: 0 7px;
+	border: 1.5px solid var(--yellow);
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 600;
+	white-space: nowrap;
+	color: var(--yellow);
+}
+
+.demo[data-demo="draft"] .card-says
+{
+	margin-top: 4px;
+	font-size: 23px;
+	line-height: 1.15;
+}
+
+.demo[data-demo="draft"] .card-stamp
+{
+	margin-top: 6px;
+	font-size: 21px;
+	font-weight: 700;
+	color: var(--accent);
+}
+
+/* under the bars: the test's three chips, and what became of the answer */
+
+.demo[data-demo="draft"] .chips
+{
+	display: flex;
+	gap: 20px;
+}
+
+.demo[data-demo="draft"] .chip
+{
+	flex: 1;
+	padding: 4px 12px 6px;
+	border: 2px solid var(--border);
+	border-left: 5px solid var(--violet);
+	border-radius: 8px;
+	background: var(--panel);
+}
+
+.demo[data-demo="draft"] .chip-words
+{
+	font-size: 19px;
+	color: var(--muted);
+}
+
+.demo[data-demo="draft"] .chip-verdict
+{
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.demo[data-demo="draft"] .chip.good
+{
+	border-top-color: var(--good);
+	border-right-color: var(--good);
+	border-bottom-color: var(--good);
+}
+
+.demo[data-demo="draft"] .chip.good .chip-verdict
+{
+	color: var(--good);
+}
+
+.demo[data-demo="draft"] .chip.bad
+{
+	border-top-color: var(--red);
+	border-right-color: var(--red);
+	border-bottom-color: var(--red);
+	animation: draft-pulse calc(var(--k) * .7s) ease-in-out infinite alternate;
+}
+
+.demo[data-demo="draft"] .chip.bad .chip-verdict
+{
+	color: var(--red);
+}
+
+.demo[data-demo="draft"] .outcome
+{
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.demo[data-demo="draft"] .outcome.good
+{
+	color: var(--good);
+}
+
+.demo[data-demo="draft"] .outcome.bad
+{
+	color: var(--red);
+}
+
+/* the third time the AI is asked: two short rows */
+
+.demo[data-demo="draft"] .third
+{
+	padding-top: 10px;
+	border-top: 2px dashed var(--border);
+}
+
+.demo[data-demo="draft"] .third-title
+{
+	font-size: 23px;
+	font-weight: 600;
+	color: var(--muted);
+}
+
+.demo[data-demo="draft"] .third-row
+{
+	margin-top: 6px;
+	font-size: 26px;
+	font-weight: 700;
+}
+
+.demo[data-demo="draft"] .third-row.bad
+{
+	color: var(--muted);
+}
+
+.demo[data-demo="draft"] .third-row.good
+{
+	color: var(--good);
+}
+
+/* what is left: each answer's result, and the stamp */
+
+.demo[data-demo="draft"] .result
+{
+	display: flex;
+	align-items: baseline;
+	gap: 12px;
+	font-size: 26px;
+}
+
+.demo[data-demo="draft"] .result-mark
+{
+	width: 26px;
+	font-weight: 700;
+}
+
+.demo[data-demo="draft"] .result-n
+{
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="draft"] .result.good .result-mark,
+.demo[data-demo="draft"] .result.good .result-word
+{
+	color: var(--good);
+}
+
+.demo[data-demo="draft"] .result.bad .result-mark,
+.demo[data-demo="draft"] .result.bad .result-word
+{
+	color: var(--red);
+}
+
+.demo[data-demo="draft"] .stamp-box
+{
+	text-align: center;
+}
+
+.demo[data-demo="draft"] .stamp-box.on
+{
+	animation: draft-stamp calc(var(--k) * .5s) ease-out both;
+}
+
+.demo[data-demo="draft"] .stamp-word
+{
+	display: inline-block;
+	padding: 2px 20px;
+	border: 4px solid var(--violet);
+	border-radius: 12px;
+	font-size: 64px;
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: .08em;
+	white-space: nowrap;
+	color: var(--violet);
+	text-shadow: 0 0 22px color-mix(in srgb, var(--violet) 55%, transparent);
+}
+
+.demo[data-demo="draft"] .stamp-line
+{
+	margin-top: 14px;
+	font-size: 25px;
+	line-height: 1.2;
+}
+
+@keyframes draft-stamp
+{
+	from
+	{
+		opacity: 0;
+		transform: scale(1.3);
+	}
+	
+	to
+	{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes draft-pulse
+{
+	from
+	{
+		box-shadow: 0 0 0 var(--red-glow);
+	}
+	
+	to
+	{
+		box-shadow: 0 0 16px var(--red-glow);
+	}
+}
+
+/* the caption: what just happened, in plain words; the arrow: the run waits for the presenter */
+
+.demo[data-demo="draft"] .caption,
+.demo[data-demo="draft"] .hold-hint
+{
+	position: absolute;
+}
+
+.demo[data-demo="draft"] .caption
+{
+	font-size: 27px;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--accent);
+}
+
+.demo[data-demo="draft"] .hold-hint
+{
+	font-family: var(--mono);
+	font-size: 24px;
+	font-weight: 700;
+	text-align: right;
+	color: var(--muted);
+}
+
+/* a step is left: the arrow says so, quietly */
+.demo[data-demo="draft"] .hold-hint.on.waiting
+{
+	color: var(--accent);
+	animation: draft-hold 1.4s ease-in-out infinite;
+}
+
+@keyframes draft-hold
+{
+	0%,
+	100%
+	{
+		opacity: .35;
+	}
+	
+	50%
+	{
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+	.demo[data-demo="draft"] .hold-hint.on.waiting
+	{
+		animation: none;
+	}
+}
+
+/* what an answer stands for: fooled, lazy or right */
+
+.demo[data-demo="draft"] .card-kind
+{
+	margin-bottom: 4px;
+	font-size: 24px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="draft"] .card-kind.fooled
+{
+	color: var(--red);
+}
+
+.demo[data-demo="draft"] .card-kind.lazy
+{
+	color: var(--yellow);
+}
+
+.demo[data-demo="draft"] .card-kind.right
+{
+	color: var(--good);
+}

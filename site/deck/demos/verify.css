@@ -1,0 +1,306 @@
+/* Demo C, `verify` (demos/verify.js): only what the shared chart vocabulary (deck.css) lacks.
+   Red the exploit and an open issue, yellow the pull request in progress and the replay, violet the
+   Shield's rule and the kernel that holds it, green what merged, closed or passed, cyan the release. */
+
+/* the labels' column, the bars' words, codesafe's words */
+
+.demo[data-demo="verify"] .demo-stage svg .lane-label
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+	text-anchor: end;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .centred
+{
+	text-anchor: middle;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .bar-text
+{
+	fill: var(--bg);
+	font-family: var(--mono);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	pointer-events: none;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .bar-text.on-release-old,
+.demo[data-demo="verify"] .demo-stage svg .bar-text.on-pr-open,
+.demo[data-demo="verify"] .demo-stage svg .bar-text.on-issue-open
+{
+	fill: var(--text);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .bar-text.on-release-new
+{
+	fill: var(--accent);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .bar-text.on-rule-lifted
+{
+	fill: var(--violet);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .words,
+.demo[data-demo="verify"] .demo-stage svg .warn
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .words.good
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .words.bad
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .words.replay
+{
+	fill: var(--yellow);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .words.retirement
+{
+	fill: var(--violet);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .warn
+{
+	font-weight: 700;
+}
+
+/* the lanes: a faint band each, the states as bars */
+
+.demo[data-demo="verify"] .demo-stage svg .lane-band
+{
+	fill: var(--border);
+	opacity: .3;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .span
+{
+	stroke: var(--muted);
+	stroke-width: 2;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .poll
+{
+	stroke: var(--yellow);
+	stroke-width: 2;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .pr-open
+{
+	fill: var(--yellow);
+	opacity: .55;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .pr-green
+{
+	fill: var(--yellow);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .pr-merged,
+.demo[data-demo="verify"] .demo-stage svg .issue-closed
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .release-old
+{
+	fill: var(--border);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .release-new
+{
+	fill: none;
+	stroke: var(--accent);
+	stroke-width: 2;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .issue-open
+{
+	fill: var(--red);
+	opacity: .6;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .issue-reopened
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+.demo[data-demo="verify"] .demo-stage svg .rule-block,
+.demo[data-demo="verify"] .demo-stage svg .rule-restored
+{
+	fill: var(--violet);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .rule-lifted
+{
+	fill: none;
+	stroke: var(--violet);
+	stroke-width: 2;
+	stroke-dasharray: 6 5;
+}
+
+/* the requests: red the exploit, yellow the replay; a violet ring is the kernel's refusal */
+
+.demo[data-demo="verify"] .demo-stage svg .req.exploit
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .req.replay
+{
+	fill: var(--yellow);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .req.refused
+{
+	stroke: var(--violet);
+	stroke-width: 4;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .req.failed
+{
+	filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+.demo[data-demo="verify"] .demo-stage svg .req.fixed
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .status
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-anchor: middle;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .status.refused
+{
+	fill: var(--violet);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .status.failed
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .status.fixed
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .trace-tag
+{
+	fill: var(--yellow);
+	font-family: var(--mono);
+	font-size: 14px;
+	letter-spacing: .04em;
+}
+
+/* the wire: the kernel bar holds the rule or not, the app box takes the answer's colour */
+
+.demo[data-demo="verify"] .demo-stage svg .wire-line
+{
+	stroke: var(--border);
+	stroke-width: 2;
+	stroke-dasharray: 8 6;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .kernel.on
+{
+	fill: var(--violet);
+	filter: drop-shadow(0 0 8px var(--violet));
+}
+
+.demo[data-demo="verify"] .demo-stage svg .kernel.off
+{
+	fill: var(--panel);
+	stroke: var(--violet);
+	stroke-width: 2;
+	stroke-dasharray: 5 4;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .kernel-rule
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 15px;
+	letter-spacing: .04em;
+	text-anchor: end;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .kernel-rule.on
+{
+	fill: var(--violet);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .app
+{
+	fill: var(--panel-2);
+	stroke: var(--border);
+	stroke-width: 2;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .app.fixed
+{
+	stroke: var(--good);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .app.failed
+{
+	stroke: var(--red);
+}
+
+.demo[data-demo="verify"] .demo-stage svg .app-text
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+	text-anchor: middle;
+}
+
+/* the side: codesafe's clock, the stamp as a word */
+
+.demo[data-demo="verify"] .demo-stage svg .clock
+{
+	fill: var(--accent);
+	font-family: var(--display);
+	font-size: 40px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-anchor: middle;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .stamp-v.word
+{
+	font-size: 64px;
+	letter-spacing: .04em;
+}
+
+.demo[data-demo="verify"] .demo-stage svg .stamp-small
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 16px;
+	letter-spacing: .04em;
+	text-anchor: middle;
+}

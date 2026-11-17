@@ -1,0 +1,177 @@
+/* Demo A, `stream` (demos/stream.js): only what the shared chart vocabulary (deck.css) lacks.
+   Cyan the doors and the stream, yellow and green the batches, red the kill, the pending batch and the
+   poison, green the stamp. */
+
+.demo[data-demo="stream"] svg .axis-title,
+.demo[data-demo="stream"] svg .note,
+.demo[data-demo="stream"] svg .lane-sub,
+.demo[data-demo="stream"] svg .tally-l,
+.demo[data-demo="stream"] svg .stamp-sub
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 16px;
+	letter-spacing: .04em;
+}
+
+.demo[data-demo="stream"] svg .lane-sub
+{
+	font-size: 14px;
+}
+
+.demo[data-demo="stream"] svg .tally-l
+{
+	font-size: 17px;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="stream"] svg .stamp-sub
+{
+	text-anchor: middle;
+}
+
+.demo[data-demo="stream"] svg .lane-label
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+}
+
+/* the doors and the stream */
+
+.demo[data-demo="stream"] svg .door
+{
+	fill: var(--accent);
+	filter: drop-shadow(0 0 5px var(--accent-glow));
+}
+
+.demo[data-demo="stream"] svg .door-label
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+}
+
+.demo[data-demo="stream"] svg .door.refused,
+.demo[data-demo="stream"] svg .door-label.refused
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="stream"] svg .backlog
+{
+	fill: var(--accent);
+	fill-opacity: .16;
+	stroke: var(--accent);
+	stroke-width: 2;
+	stroke-linejoin: round;
+}
+
+.demo[data-demo="stream"] svg .baseline
+{
+	stroke: var(--border);
+	stroke-width: 1;
+}
+
+.demo[data-demo="stream"] svg .backlog-label,
+.demo[data-demo="stream"] svg .claim-label
+{
+	fill: var(--accent);
+	font-family: var(--mono);
+	font-size: 16px;
+	letter-spacing: .04em;
+}
+
+/* the kill, the batch it left pending, and the claim that adopts it */
+
+.demo[data-demo="stream"] svg .pending
+{
+	fill: none;
+	stroke: var(--red);
+	stroke-width: 2;
+	stroke-dasharray: 6 4;
+}
+
+.demo[data-demo="stream"] svg .crash
+{
+	stroke: var(--red);
+	stroke-width: 2.5;
+}
+
+.demo[data-demo="stream"] svg .crash-label,
+.demo[data-demo="stream"] svg .pending-label,
+.demo[data-demo="stream"] svg .poison-label,
+.demo[data-demo="stream"] svg .dead-label
+{
+	fill: var(--red);
+	font-family: var(--mono);
+	font-size: 16px;
+	letter-spacing: .04em;
+}
+
+.demo[data-demo="stream"] svg .crash-label,
+.demo[data-demo="stream"] svg .poison-label
+{
+	font-weight: 700;
+}
+
+.demo[data-demo="stream"] svg .start-mark
+{
+	stroke: var(--muted);
+	stroke-width: 1.5;
+}
+
+.demo[data-demo="stream"] svg .claim-line
+{
+	stroke: var(--accent);
+	stroke-width: 2;
+	stroke-dasharray: 4 4;
+}
+
+/* the poison and the dead stream */
+
+.demo[data-demo="stream"] svg .poison,
+.demo[data-demo="stream"] svg .dead
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+.demo[data-demo="stream"] svg .poison-path
+{
+	stroke: var(--red);
+	stroke-width: 1.5;
+	stroke-dasharray: 3 5;
+	opacity: .7;
+}
+
+/* the tally: accepted = stored + dead-lettered + still in the stream */
+
+.demo[data-demo="stream"] svg .tally-v
+{
+	font-family: var(--display);
+	font-size: 44px;
+	font-weight: 700;
+	text-anchor: end;
+}
+
+.demo[data-demo="stream"] svg .tally-v.accepted
+{
+	fill: var(--accent);
+}
+
+.demo[data-demo="stream"] svg .tally-v.stored
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="stream"] svg .tally-v.deadlettered
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="stream"] svg .tally-v.flight
+{
+	fill: var(--yellow);
+}

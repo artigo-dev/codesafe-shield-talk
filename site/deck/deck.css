@@ -1,0 +1,3916 @@
+/*	codesafe-shield — the deck, on the cache talk's (rg-dev #69) layout and in codesafe's colours.
+	The typographic system of the artigo package headers (docs/src/plate.html in
+	artigo/versioned-cache and artigo/cache-stampede): Rajdhani set wide, a faint 44 px grid, a
+	letter-spaced mono for labels, the "stamp" for a result. The colours are codesafe's site's
+	(ovos.github.io/codesafe): cyan leads on near-black, red is the attack, yellow is waiting or a
+	fix on its way, violet is the Shield, green is what passed or holds. */
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 400;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-400.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 400;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-400-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 500;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-500.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 500;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-500-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 600;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-600.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 600;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-600-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 700;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-700.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face
+{
+	font-family: 'Rajdhani';
+	font-weight: 700;
+	font-display: block;
+	src: url('../fonts/rajdhani/rajdhani-700-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root
+{
+	/* the bottom of what the room sees: below it the screen may hang behind heads */
+	--safe: 900px;
+	--bg: #0a0a12;
+	--panel: #0d0d17;
+	--panel-2: #11111c;
+	--border: #26263a;
+	--text: #e8e8f0;
+	--muted: #8b8ba7;
+	/* codesafe's own colours (ovos.github.io/codesafe): cyan leads, as on the site */
+	--accent: #00f0ff;
+	--accent-glow: rgba(0, 240, 255, 0.40);
+	/* what passed, closed or holds: the console's good-news green */
+	--good: #53fb53;
+	--good-glow: rgba(83, 251, 83, 0.40);
+	--red: #ff003c;
+	--red-glow: rgba(255, 0, 60, 0.40);
+	--yellow: #fcee0a;
+	--cyan: #00f0ff;
+	/* the Shield: a hue no other step wears, and never the attack's red */
+	--violet: #bb91ff;
+	--grid: rgba(0, 240, 255, 0.05);
+	--letterbox: #000;
+	--display: 'Rajdhani', 'Segoe UI', sans-serif;
+	--mono: 'Cascadia Code', Consolas, 'Courier New', monospace;
+	--scale: 1;
+}
+
+/* T: for a projector that washes the dark theme out */
+:root[data-theme="light"]
+{
+	--bg: #f4f4f8;
+	--panel: #ffffff;
+	--panel-2: #ececf3;
+	--border: #c9c9d8;
+	--text: #14141f;
+	--muted: #55556e;
+	--accent: #007f8a;
+	--accent-glow: rgba(0, 127, 138, 0.18);
+	--good: #1f7a1f;
+	--good-glow: rgba(31, 122, 31, 0.15);
+	--red: #d1002f;
+	--red-glow: rgba(209, 0, 47, 0.15);
+	--yellow: #a07c00;
+	--cyan: #007f8a;
+	--violet: #7b2cbf;
+	--grid: rgba(0, 127, 138, 0.07);
+	--letterbox: #d8d8e2;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+html, body
+{
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	/* a downward drag on a phone does not pull to refresh */
+	overscroll-behavior: none;
+	background: var(--letterbox);
+	color: var(--text);
+	font-family: var(--display);
+}
+
+/* the stage: a 1920×1080 slide, scaled to the window and centred */
+
+.deck
+{
+	position: fixed;
+	inset: 0;
+}
+
+.slide
+{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1920px;
+	height: 1080px;
+	padding: 30px 140px 0;
+	overflow: hidden;
+	background: var(--bg);
+	transform: translate(-50%, -50%) scale(var(--scale));
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .25s ease;
+}
+
+.slide.current
+{
+	visibility: visible;
+	opacity: 1;
+}
+
+.slide::before
+{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(var(--grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+	background-size: 88px 88px, 88px 88px;
+	pointer-events: none;
+}
+
+.slide::after
+{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(110% 110% at 85% 35%, var(--accent-glow), transparent 55%),
+		linear-gradient(90deg, var(--bg) 0%, transparent 70%);
+	opacity: .22;
+	pointer-events: none;
+}
+
+.slide > *
+{
+	position: relative;
+	z-index: 1;
+}
+
+/* the plate's type */
+
+.eyebrow
+{
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: .42em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.eyebrow .on
+{
+	color: var(--accent);
+	opacity: .85;
+}
+
+.eyebrow .bad
+{
+	color: var(--red);
+}
+
+.word
+{
+	margin: 22px 0 0;
+	font-size: 90px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.word .a
+{
+	color: var(--text);
+	text-shadow: 0 0 44px rgba(232, 232, 240, 0.22);
+}
+
+.word .b
+{
+	color: var(--accent);
+	text-shadow: 0 0 44px var(--accent-glow);
+}
+
+.word .r
+{
+	color: var(--red);
+	text-shadow: 0 0 44px var(--red-glow);
+}
+
+h2
+{
+	margin: 18px 0 0;
+	font-size: 62px;
+	font-weight: 700;
+	letter-spacing: .1em;
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+
+.claim
+{
+	margin: 30px 0 0;
+	max-width: 1400px;
+	font-size: 48px;
+	font-weight: 600;
+	line-height: 1.15;
+}
+
+.g
+{
+	color: var(--accent);
+}
+
+.x
+{
+	color: var(--red);
+}
+
+.w
+{
+	color: var(--yellow);
+}
+
+.m
+{
+	color: var(--muted);
+}
+
+.rule
+{
+	margin: 34px 0 0;
+	width: 1000px;
+	height: 2px;
+	background: linear-gradient(90deg, var(--accent), rgba(38, 38, 58, 0.9) 30%, rgba(38, 38, 58, 0));
+}
+
+.rule.bad
+{
+	background: linear-gradient(90deg, var(--red), rgba(38, 38, 58, 0.9) 30%, rgba(38, 38, 58, 0));
+}
+
+.sub
+{
+	margin: 24px 0 0;
+	font-family: var(--mono);
+	font-size: 22px;
+	letter-spacing: .09em;
+	color: var(--muted);
+}
+
+ul.points
+{
+	margin: 44px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 40px;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+ul.points li
+{
+	position: relative;
+	margin: 0 0 22px;
+	padding-left: 48px;
+}
+
+ul.points li::before
+{
+	content: '//';
+	position: absolute;
+	left: 0;
+	color: var(--accent);
+	font-weight: 700;
+	opacity: .85;
+}
+
+ul.points li.bad::before
+{
+	color: var(--red);
+}
+
+/* the result of a demo: a big number over a small caption */
+
+.stamp
+{
+	text-align: center;
+}
+
+.stamp .v
+{
+	font-size: 128px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	line-height: 1;
+	color: var(--accent);
+	text-shadow: 0 0 52px var(--accent-glow);
+}
+
+.stamp.bad .v
+{
+	color: var(--red);
+	text-shadow: 0 0 52px var(--red-glow);
+}
+
+.stamp .l
+{
+	margin-top: 14px;
+	font-family: var(--mono);
+	font-size: 22px;
+	letter-spacing: .24em;
+	color: var(--muted);
+	text-transform: uppercase;
+}
+
+.stamp.corner
+{
+	position: absolute;
+	right: 140px;
+	top: calc(var(--safe) / 2);
+	transform: translateY(-50%);
+}
+
+/* the title slide's QR code: the deck on GitHub Pages. Dark modules on a light card in both themes:
+   inverted codes scan badly */
+
+.qr.corner
+{
+	position: absolute;
+	right: 140px;
+	top: calc(var(--safe) / 2);
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+	border-bottom: 0;
+	color: var(--muted);
+	text-decoration: none;
+}
+
+.qr .qr-code
+{
+	display: block;
+	width: 280px;
+	height: 280px;
+	padding: 6px;
+	border-radius: 12px;
+	background: #f4f4f8;
+	fill: #0a0a12;
+	box-shadow: 0 0 44px var(--accent-glow);
+}
+
+.qr .qr-l
+{
+	margin-top: 4px;
+	font-family: var(--mono);
+	font-size: 20px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+}
+
+.qr .qr-url
+{
+	font-family: var(--mono);
+	font-size: 19px;
+	letter-spacing: .04em;
+	color: var(--text);
+}
+
+/* code: a panel, a small highlighter's classes (deck.js) */
+
+pre.code
+{
+	margin: 40px 0 0;
+	padding: 32px 40px;
+	max-width: 1640px;
+	overflow: hidden;
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-left: 3px solid var(--accent);
+	font-family: var(--mono);
+	font-size: 27px;
+	line-height: 1.4;
+	color: var(--text);
+	white-space: pre;
+	tab-size: 4;
+	/* PHP as it is typed: -> and => stay two characters, not arrows */
+	font-variant-ligatures: none;
+	font-feature-settings: "liga" 0, "calt" 0;
+}
+
+pre.code .k { color: #c792ea; }
+pre.code .s { color: var(--accent); }
+pre.code .c { color: var(--muted); font-style: italic; }
+pre.code .v { color: var(--cyan); }
+pre.code .n { color: var(--yellow); }
+pre.code .f { color: #82aaff; }
+pre.code .add { background: rgba(61, 220, 151, 0.12); display: inline-block; width: 100%; }
+pre.code .del { background: rgba(255, 0, 60, 0.12); display: inline-block; width: 100%; color: var(--muted); }
+pre.code .hl { background: rgba(252, 238, 10, 0.10); display: inline-block; width: 100%; }
+
+:root[data-theme="light"] pre.code .k { color: #7a3eb1; }
+:root[data-theme="light"] pre.code .f { color: #2457c5; }
+
+/* the road: the stations of the talk, the current one lit */
+
+.road
+{
+	display: flex;
+	align-items: flex-start;
+	margin: 64px 0 0;
+}
+
+.road .station
+{
+	position: relative;
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 46px 8px 0 0;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: .03em;
+	line-height: 1.15;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.road .station::before
+{
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 13px;
+	height: 2px;
+	background: var(--border);
+}
+
+/* the road ends at the last station: as wide as its dot, so the others spread over the whole width, its
+   name running on into the margin; no line after it */
+
+.road .station:last-child
+{
+	flex: 0 0 20px;
+	padding-right: 0;
+	white-space: nowrap;
+}
+
+.road .station:last-child::before
+{
+	display: none;
+}
+
+.road .station::after
+{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--border);
+	border-radius: 50%;
+	background: var(--bg);
+}
+
+.road .station.passed
+{
+	color: var(--text);
+}
+
+.road .station.passed::before
+{
+	background: var(--accent);
+	opacity: .55;
+}
+
+/* the dot is solid (the dimmed accent mixed in, not see-through), so the line does not show through it */
+
+.road .station.passed::after
+{
+	border-color: color-mix(in srgb, var(--accent) 55%, var(--bg));
+	background: color-mix(in srgb, var(--accent) 55%, var(--bg));
+}
+
+.road .station.here
+{
+	color: var(--accent);
+	text-shadow: 0 0 22px var(--accent-glow);
+}
+
+.road .station.here::after
+{
+	border-color: var(--accent);
+	background: var(--accent);
+	box-shadow: 0 0 22px var(--accent-glow);
+}
+
+.road .station .year
+{
+	display: block;
+	margin-top: 8px;
+	font-family: var(--mono);
+	font-size: 19px;
+	letter-spacing: .12em;
+	color: var(--muted);
+}
+
+/* a demo: a head, a stage the renderer draws into, a foot */
+
+.demo
+{
+	position: absolute;
+	inset: 26px 120px calc(1080px - var(--safe) + 60px);
+	display: flex;
+	flex-direction: column;
+}
+
+.demo-head
+{
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 40px;
+}
+
+.demo-head h3
+{
+	flex: none;
+	margin: 0;
+	font-size: 46px;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.demo-stage
+{
+	position: relative;
+	flex: 1;
+	margin-top: 26px;
+}
+
+.demo-foot
+{
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+	margin-top: 18px;
+	font-family: var(--mono);
+	font-size: 19px;
+	letter-spacing: .08em;
+	color: var(--muted);
+}
+
+.demo-foot .source.live
+{
+	color: var(--accent);
+}
+
+.demo-foot .source.error
+{
+	color: var(--red);
+}
+
+.demo-foot kbd
+{
+	padding: 1px 8px;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	font-family: var(--mono);
+	color: var(--text);
+}
+
+/* the keys in a demo's foot are buttons as well: a click replays, changes the speed, runs live */
+
+.demo-foot button
+{
+	margin: 0 -6px;
+	padding: 3px 6px;
+	border: 0;
+	border-radius: 6px;
+	background: none;
+	font: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	cursor: pointer;
+	transition: color .15s, background-color .15s;
+}
+
+.demo-foot button kbd
+{
+	transition: border-color .15s, color .15s, background-color .15s;
+}
+
+.demo-foot button:hover,
+.demo-foot button:focus-visible
+{
+	outline: none;
+	color: var(--text);
+	background: var(--panel-2);
+}
+
+.demo-foot button:hover kbd,
+.demo-foot button:focus-visible kbd
+{
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.demo-foot button:active kbd
+{
+	background: var(--accent);
+	color: var(--bg);
+}
+
+/* a demo's chart (demos/*.js): ticks, a panel per mode with its label, lanes, the stamp, the legend.
+   A renderer draws an <svg class="<its name>"> and adds its own rules after these */
+
+.demo-stage svg .tick
+{
+	stroke: var(--border);
+	stroke-width: 1;
+}
+
+.demo-stage svg .tick-label
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 18px;
+	text-anchor: middle;
+}
+
+.demo-stage svg .cursor
+{
+	stroke: var(--text);
+	stroke-width: 1.5;
+	opacity: .35;
+}
+
+.demo-stage svg .panel-label
+{
+	fill: var(--text);
+	font-family: var(--display);
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.demo-stage svg .good .panel-label
+{
+	fill: var(--good);
+}
+
+.demo-stage svg .panel-sub
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .06em;
+}
+
+.demo-stage svg .track
+{
+	fill: var(--border);
+}
+
+.demo-stage svg .wait
+{
+	fill: var(--yellow);
+	opacity: .55;
+}
+
+.demo-stage svg .work
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+.demo-stage svg .done
+{
+	fill: var(--good);
+	filter: drop-shadow(0 0 5px var(--good-glow));
+}
+
+/* the legend, and the stamp: a big number over a small caption */
+
+.demo-stage svg .legend-label
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+}
+
+.demo-stage svg .stamp-v
+{
+	font-family: var(--display);
+	font-size: 110px;
+	font-weight: 700;
+	text-anchor: middle;
+}
+
+.demo-stage svg .stamp-v.bad
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 18px var(--red-glow));
+}
+
+.demo-stage svg .stamp-v.good
+{
+	fill: var(--good);
+	filter: drop-shadow(0 0 18px var(--good-glow));
+}
+
+.demo-stage svg .stamp-l
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 17px;
+	letter-spacing: .22em;
+	text-anchor: middle;
+}
+
+/* fragments: revealed one arrow press at a time */
+
+.fragment
+{
+	opacity: 0;
+	transition: opacity .3s ease, transform .3s ease;
+	transform: translateY(12px);
+}
+
+.fragment.shown
+{
+	opacity: 1;
+	transform: none;
+}
+
+/* chrome: the slide counter, the clock of a presenter's own screen */
+
+.chrome
+{
+	position: fixed;
+	right: 18px;
+	bottom: 12px;
+	z-index: 10;
+	display: flex;
+	gap: 18px;
+	align-items: baseline;
+	font-family: var(--mono);
+	font-size: 13px;
+	letter-spacing: .12em;
+	color: var(--muted);
+	opacity: .55;
+}
+
+.chrome[hidden]
+{
+	display: none;
+}
+
+.chrome:hover
+{
+	opacity: 1;
+}
+
+/* the language: each text is there twice, <html lang> shows one */
+
+html[lang="pl"] [lang="en"],
+html[lang="en"] [lang="pl"]
+{
+	display: none !important;
+}
+
+/* by the slide counter: ? (the list of keys), the moon and the sun (the theme on screen lit), EN · PL (the
+   language on screen lit) */
+
+.chrome button
+{
+	padding: 2px 4px;
+	border: 0;
+	background: none;
+	font: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+.chrome button:hover,
+.chrome button:focus-visible
+{
+	color: var(--text);
+}
+
+.chrome .language span,
+.chrome .theme span
+{
+	opacity: .55;
+}
+
+html[lang="en"] .chrome .language .en,
+html[lang="pl"] .chrome .language .pl,
+html:not([data-theme="light"]) .chrome .theme .dark,
+html[data-theme="light"] .chrome .theme .light
+{
+	opacity: 1;
+	color: var(--text);
+}
+
+.chrome svg
+{
+	width: 1.2em;
+	height: 1.2em;
+	vertical-align: -.25em;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.5;
+	stroke-linecap: round;
+}
+
+.chrome svg .solid
+{
+	fill: currentColor;
+	stroke: none;
+}
+
+.chrome .help-toggle
+{
+	min-width: 1.6em;
+	padding: 0 5px;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	line-height: 1.4;
+	letter-spacing: 0;
+}
+
+/* a finger, not a mouse: bigger buttons, and no hover to bring the chrome out */
+
+@media (pointer: coarse)
+{
+	.chrome
+	{
+		gap: 10px;
+		font-size: 15px;
+		opacity: .8;
+	}
+	
+	.chrome button
+	{
+		padding: 8px 6px;
+	}
+	
+	.chrome .help-toggle
+	{
+		padding: 4px 9px;
+	}
+}
+
+/* ? or H: the list of keys, over the deck, in the screen's pixels rather than the slide's (readable on a
+   phone); it scrolls inside itself when the screen is short */
+
+.help
+{
+	position: fixed;
+	inset: 0;
+	z-index: 30;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+	background: color-mix(in srgb, var(--letterbox) 72%, transparent);
+}
+
+.help[hidden]
+{
+	display: none;
+}
+
+.help-panel
+{
+	position: relative;
+	width: min(1000px, 100%);
+	max-height: 100%;
+	overflow: auto;
+	overscroll-behavior: contain;
+	padding: 26px 32px 20px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	background: var(--panel);
+	color: var(--text);
+	box-shadow: 0 0 34px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.help-panel:focus
+{
+	outline: none;
+}
+
+.help-title
+{
+	margin: 0 40px 20px 0;
+	font-family: var(--mono);
+	font-size: 14px;
+	letter-spacing: .24em;
+	text-transform: uppercase;
+	color: var(--accent);
+}
+
+.help-close
+{
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 34px;
+	height: 34px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: none;
+	font: 20px/1 var(--mono);
+	color: var(--muted);
+	cursor: pointer;
+}
+
+.help-close:hover,
+.help-close:focus-visible
+{
+	border-color: var(--muted);
+	color: var(--text);
+}
+
+.help-groups
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+	gap: 22px 44px;
+}
+
+.help-group
+{
+	margin-bottom: 8px;
+	font-family: var(--mono);
+	font-size: 12px;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.help dl
+{
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 7px 16px;
+	align-items: baseline;
+	margin: 0;
+}
+
+.help dt
+{
+	font-family: var(--mono);
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.help dd
+{
+	margin: 0;
+	font-size: 18px;
+	line-height: 1.25;
+}
+
+.help kbd
+{
+	display: inline-block;
+	min-width: 1.8em;
+	padding: 1px 6px;
+	border: 1px solid var(--border);
+	border-bottom-width: 2px;
+	border-radius: 4px;
+	background: var(--panel-2);
+	font-family: var(--mono);
+	font-size: 13px;
+	text-align: center;
+	color: var(--text);
+}
+
+.help .gesture
+{
+	color: var(--accent);
+}
+
+.help-foot
+{
+	margin: 20px 0 0;
+	font-family: var(--mono);
+	font-size: 12px;
+	letter-spacing: .06em;
+	color: var(--muted);
+}
+
+/* a phone: each key above what it does */
+
+@media (max-width: 520px)
+{
+	.help-panel
+	{
+		padding: 20px 18px 16px;
+	}
+	
+	.help dl
+	{
+		grid-template-columns: 1fr;
+		gap: 2px;
+	}
+	
+	.help dd
+	{
+		margin-bottom: 8px;
+		font-size: 17px;
+	}
+}
+
+.blank .slide
+{
+	visibility: hidden !important;
+}
+
+/* O: every slide at once */
+
+/* the grid is taller than the window: the deck scrolls while it is open */
+
+.overview .deck
+{
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+}
+
+.overview .slide
+{
+	visibility: visible;
+	opacity: 1;
+	cursor: pointer;
+	transition: none;
+	outline: 2px solid transparent;
+}
+
+.overview .slide.current
+{
+	outline-color: var(--accent);
+}
+
+/* the slide's number, big enough to read at the overview's scale */
+
+.slide > .slide-number
+{
+	display: none;
+}
+
+.overview .slide > .slide-number
+{
+	display: block;
+	position: absolute;
+	right: 40px;
+	bottom: 40px;
+	z-index: 2;
+	padding: 14px 40px;
+	border: 4px solid var(--border);
+	border-radius: 28px;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--mono);
+	font-size: 140px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.overview .slide.current > .slide-number
+{
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+/* the presenter's window (P) */
+
+.presenter
+{
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	grid-template-rows: auto 1fr;
+	gap: 18px;
+	height: 100%;
+	padding: 18px;
+	overflow: hidden;
+	background: #050509;
+	color: #e8e8f0;
+	font-family: var(--display);
+}
+
+.presenter .clock
+{
+	grid-column: 1 / 3;
+	display: flex;
+	justify-content: space-between;
+	font-family: var(--mono);
+	font-size: 34px;
+	letter-spacing: .1em;
+}
+
+.presenter .clock .elapsed
+{
+	color: var(--accent);
+}
+
+.presenter .frames
+{
+	display: grid;
+	grid-template-rows: 3fr 2fr;
+	gap: 18px;
+	min-height: 0;
+}
+
+.presenter iframe
+{
+	width: 100%;
+	height: 100%;
+	border: 1px solid var(--border);
+	background: #000;
+}
+
+.presenter .notes
+{
+	overflow: auto;
+	padding: 6px 12px;
+	font-size: 30px;
+	line-height: 1.35;
+}
+
+.presenter .notes h4
+{
+	margin: 0 0 12px;
+	font-family: var(--mono);
+	font-size: 16px;
+	letter-spacing: .2em;
+	color: var(--muted);
+}
+
+aside.notes
+{
+	display: none;
+}
+
+/* print: one slide a page, for the organiser's PDF */
+
+@media print
+{
+	@page
+	{
+		size: 1920px 1080px;
+		margin: 0;
+	}
+	
+	html, body
+	{
+		height: auto;
+		overflow: visible;
+		background: var(--bg);
+	}
+	
+	.deck
+	{
+		position: static;
+	}
+	
+	.slide
+	{
+		position: relative;
+		left: auto;
+		top: auto;
+		visibility: visible;
+		opacity: 1;
+		transform: none;
+		page-break-after: always;
+		break-after: page;
+	}
+	
+	.fragment
+	{
+		opacity: 1;
+		transform: none;
+	}
+	
+	.chrome,
+	.help
+	{
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+	.slide,
+	.fragment
+	{
+		transition: none;
+	}
+}
+
+/* L appears only where the talk's own server can run a demo live */
+
+.live-only
+{
+	display: none;
+}
+
+.can-run-live .live-only
+{
+	display: inline;
+}
+
+/* a flow: boxes and the arrows between them (what talks to what) */
+
+.flow
+{
+	display: flex;
+	align-items: center;
+	gap: 0;
+	margin: 56px 0 0;
+}
+
+.flow .box
+{
+	min-width: 230px;
+	padding: 24px 28px;
+	border: 2px solid var(--border);
+	border-radius: 12px;
+	background: var(--panel);
+	text-align: center;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1.15;
+	text-transform: uppercase;
+}
+
+.flow .box small
+{
+	display: block;
+	margin-top: 6px;
+	font-family: var(--mono);
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: .04em;
+	color: var(--muted);
+	text-transform: none;
+}
+
+.flow .box.good
+{
+	border-color: var(--good);
+	box-shadow: 0 0 34px var(--good-glow);
+}
+
+.flow .box.bad
+{
+	border-color: var(--red);
+	box-shadow: 0 0 34px var(--red-glow);
+}
+
+.flow .box.slow
+{
+	border-style: dashed;
+}
+
+.flow .arrow
+{
+	flex: 1;
+	min-width: 120px;
+	position: relative;
+	padding: 0 18px 30px;
+	text-align: center;
+	font-family: var(--mono);
+	font-size: 20px;
+	color: var(--muted);
+}
+
+.flow .arrow::after
+{
+	content: '';
+	position: absolute;
+	left: 10px;
+	right: 14px;
+	bottom: 12px;
+	height: 2px;
+	background: linear-gradient(90deg, var(--border), var(--muted));
+}
+
+/* the head: over the line's end, in the line's colour */
+
+.flow .arrow::before
+{
+	content: '';
+	position: absolute;
+	z-index: 1;
+	right: 8px;
+	bottom: 6px;
+	border: 7px solid transparent;
+	border-right: 0;
+	border-left: 12px solid var(--muted);
+}
+
+.flow .arrow.bad::after
+{
+	background: linear-gradient(90deg, var(--border), var(--red));
+}
+
+.flow .arrow.bad::before
+{
+	border-left-color: var(--red);
+}
+
+.flow .arrow.good::after
+{
+	background: linear-gradient(90deg, var(--border), var(--good));
+}
+
+.flow .arrow.good::before
+{
+	border-left-color: var(--good);
+}
+
+/* a term, explained in one plain sentence where it first appears */
+
+.term
+{
+	position: absolute;
+	left: 140px;
+	right: 140px;
+	bottom: calc(1080px - var(--safe) + 60px);
+	display: flex;
+	gap: 26px;
+	align-items: baseline;
+	padding: 20px 28px;
+	border: 1px solid var(--border);
+	border-left: 3px solid var(--cyan);
+	border-radius: 12px;
+	background: var(--panel);
+	font-size: 27px;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+.term b
+{
+	flex: none;
+	font-family: var(--mono);
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: .22em;
+	color: var(--cyan);
+	text-transform: uppercase;
+}
+
+/* two columns: before / after, problem / fix */
+
+.columns
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	margin: 50px 0 0;
+}
+
+.columns h4
+{
+	margin: 0 0 18px;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.columns h4.g
+{
+	color: var(--accent);
+}
+
+.columns h4.x
+{
+	color: var(--red);
+}
+
+.columns ul.points
+{
+	margin-top: 0;
+	font-size: 34px;
+}
+
+.columns pre.code
+{
+	margin-top: 0;
+	font-size: 22px;
+}
+
+/* a big statement, the line the room should remember */
+
+.statement
+{
+	margin: 100px 0 0;
+	max-width: 1640px;
+	font-size: 70px;
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: .02em;
+}
+
+/* the chapter divider's one-line teaser, under the road */
+
+.teaser
+{
+	margin: 96px 0 0;
+	max-width: 1450px;
+	font-size: 46px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+/* the lessons of the recap, one per station */
+
+ol.lessons
+{
+	margin: 40px 0 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: lesson;
+	columns: 2;
+	column-gap: 90px;
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+ol.lessons li
+{
+	position: relative;
+	margin: 0 0 20px;
+	padding-left: 64px;
+	break-inside: avoid;
+	counter-increment: lesson;
+}
+
+ol.lessons li::before
+{
+	content: counter(lesson, decimal-leading-zero);
+	position: absolute;
+	left: 0;
+	font-family: var(--mono);
+	font-size: 24px;
+	color: var(--accent);
+}
+
+/* a numbered sequence: what happens, in order */
+
+ol.sequence
+{
+	margin: 44px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 35px;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+ol.sequence li
+{
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	gap: 24px;
+	margin: 0 0 20px;
+}
+
+ol.sequence li .when
+{
+	font-family: var(--mono);
+	font-size: 26px;
+	color: var(--muted);
+	padding-top: 6px;
+}
+
+/* a demo whose scenario is not built yet */
+
+.demo-placeholder
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	border: 2px dashed var(--border);
+	font-family: var(--mono);
+	font-size: 26px;
+	letter-spacing: .2em;
+	color: var(--muted);
+	text-transform: uppercase;
+}
+
+/* a line right under the road: clear of the two-line station names */
+
+.road + .claim
+{
+	margin-top: 100px;
+}
+
+/* code split by when it runs: DISPLAY (showing a page) beside EDIT (an editor saving) */
+
+.code-columns
+{
+	margin-top: 40px;
+	gap: 50px;
+}
+
+.code-columns h4
+{
+	margin-bottom: 14px;
+	color: var(--cyan);
+	letter-spacing: .3em;
+}
+
+.code-columns pre.code
+{
+	max-width: none;
+	font-size: 24px;
+}
+
+/* the left code is the longer one (Lua inside Redis, beside the PHP that calls it) */
+
+.code-columns.wide-left
+{
+	grid-template-columns: 1.45fr 1fr;
+}
+
+/* the right code is the longer one (the Lua beside the Redis it leaves behind) */
+
+.code-columns.wide-right
+{
+	grid-template-columns: 1fr 1.45fr;
+}
+
+/* a flow that forks: several boxes stacked at one step */
+
+.flow .stack
+{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.flow .stack .box
+{
+	min-width: 520px;
+	text-align: left;
+}
+
+/* a divider's teaser that introduces a list: the list follows close */
+
+.teaser + .points
+{
+	margin-top: 26px;
+}
+
+/* a sequence's left column, lit: the chosen option */
+
+ol.sequence li .when.g
+{
+	color: var(--accent);
+	font-weight: 700;
+}
+
+/* a table of measurements */
+
+table.data
+{
+	margin: 36px 0 0;
+	width: 100%;
+	max-width: 1640px;
+	border-collapse: collapse;
+	font-family: var(--mono);
+	font-size: 27px;
+}
+
+table.data th
+{
+	padding: 0 24px 14px 0;
+	text-align: left;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: .14em;
+	color: var(--muted);
+	text-transform: uppercase;
+	border-bottom: 1px solid var(--border);
+}
+
+table.data td
+{
+	padding: 15px 24px 15px 0;
+	border-bottom: 1px solid var(--border);
+}
+
+table.data tr.hl td
+{
+	background: rgba(61, 220, 151, 0.05);
+}
+
+/* the stations lead somewhere: a click goes to the slide the station starts on */
+
+.road .station
+{
+	cursor: pointer;
+}
+
+.road .station:hover
+{
+	color: var(--text);
+}
+
+/* the small road at the foot of what the room sees (right above the free bottom quarter): where we are, and a way back */
+
+.road.mini
+{
+	position: absolute;
+	left: 140px;
+	right: 140px;
+	top: calc(var(--safe) - 44px);
+	z-index: 2;
+	margin: 0;
+}
+
+.road.mini .station
+{
+	height: 36px;
+	padding: 20px 10px 0 0;
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.road.mini .station::before
+{
+	top: 6px;
+	height: 1px;
+}
+
+.road.mini .station::after
+{
+	top: 0;
+	width: 13px;
+	height: 13px;
+}
+
+.road.mini .station:last-child
+{
+	flex-basis: 13px;
+	padding-right: 0;
+}
+
+.road.mini .station.here
+{
+	font-size: 14px;
+	letter-spacing: .12em;
+}
+
+.road.mini .station:hover
+{
+	font-size: 14px;
+	color: var(--text);
+}
+
+@media print
+{
+	.road .station
+	{
+		cursor: default;
+	}
+}
+
+/* a table beside the points it proves (the zstd numbers) */
+
+.columns.table-left
+{
+	grid-template-columns: 1.7fr 1fr;
+	align-items: start;
+}
+
+.columns table.data
+{
+	margin-top: 0;
+}
+
+/* numbers: right-aligned, so the decimal points line up */
+
+/* a comparison: the designs' names as they are written, the cells wrapping */
+
+table.data.compare
+{
+	font-family: var(--display);
+	font-size: 30px;
+	table-layout: fixed;
+}
+
+table.data.compare th
+{
+	font-family: var(--mono);
+	font-size: 20px;
+	letter-spacing: .02em;
+	text-transform: none;
+	color: var(--text);
+}
+
+table.data.compare th:first-child,
+table.data.compare td:first-child
+{
+	width: 15%;
+	color: var(--muted);
+}
+
+table.data.compare th.g
+{
+	color: var(--accent);
+}
+
+/* a comparison with a measured figure in every cell: the figure big, what it means under it */
+
+table.data.compare.scores td
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	vertical-align: top;
+}
+
+/* Polish needs a wider first column for the rows' names */
+
+html[lang="pl"] table.data.compare.scores th:first-child,
+html[lang="pl"] table.data.compare.scores td:first-child
+{
+	width: 19%;
+}
+
+table.data.compare.scores td small
+{
+	display: block;
+	margin-top: 6px;
+	font-family: var(--mono);
+	font-size: 16px;
+	color: var(--muted);
+}
+
+table.data.compare.scores .fig
+{
+	display: block;
+	font-size: 68px;
+	font-weight: 700;
+	letter-spacing: .02em;
+	line-height: 1;
+	color: var(--accent);
+	text-shadow: 0 0 32px var(--accent-glow);
+}
+
+table.data.compare.scores .fig.bad
+{
+	color: var(--red);
+	text-shadow: 0 0 32px var(--red-glow);
+}
+
+table.data.compare.scores .why
+{
+	display: block;
+	margin-top: 8px;
+	font-size: 22px;
+	line-height: 1.3;
+	color: var(--muted);
+}
+
+table.data.compare th small
+{
+	display: block;
+	margin-top: 6px;
+	font-size: 16px;
+	color: var(--muted);
+}
+
+table.data.compare td
+{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+table.data.compare + .claim
+{
+	margin-top: 56px;
+}
+
+table.data .num
+{
+	text-align: right;
+}
+
+/* a pair of rows for one value (two codecs): no line between them */
+
+table.data tr.pair td
+{
+	border-bottom-color: transparent;
+}
+
+/* a demo's heading keeps its one line; the label beside it wraps instead */
+
+.demo-head .eyebrow
+{
+	text-align: right;
+	line-height: 1.5;
+}
+
+/* the title: the whole visible three quarters for the name of the talk */
+
+#title
+{
+	padding-top: 100px;
+}
+
+#title .word
+{
+	font-size: 118px;
+}
+
+#title .claim
+{
+	font-size: 54px;
+}
+
+/* a notice pinned instead of deleting: a rubber stamp beside the sentence that names it */
+
+.defs
+{
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.teaser-row
+{
+	display: flex;
+	align-items: center;
+	gap: 80px;
+	margin: 96px 0 0;
+}
+
+.teaser-row .teaser
+{
+	margin: 0;
+	max-width: 1000px;
+}
+
+.teaser-row + .points
+{
+	margin-top: 26px;
+}
+
+.notice-stamp
+{
+	flex: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 18px 34px 20px;
+	border: 3px solid var(--violet);
+	border-radius: 12px;
+	color: var(--violet);
+	text-align: center;
+	text-shadow: 0 0 44px color-mix(in srgb, var(--violet) 55%, transparent);
+	box-shadow: 0 0 34px color-mix(in srgb, var(--violet) 30%, transparent), inset 0 0 34px color-mix(in srgb, var(--violet) 14%, transparent);
+}
+
+.notice-stamp .big
+{
+	padding-left: .14em;
+	font-size: 86px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.notice-stamp .small
+{
+	margin-top: 10px;
+	font-family: var(--mono);
+	font-size: 19px;
+	letter-spacing: .12em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+/* it lands like a stamp: from a little above the paper, at once */
+
+.notice-stamp.fragment
+{
+	opacity: 0;
+	transform: scale(1.5);
+	transition: opacity .12s ease-in, transform .16s cubic-bezier(.6, 0, .9, .4);
+}
+
+.notice-stamp.fragment.shown
+{
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* a link in a slide's text: the text's own colour, a thin line under it (opens in a new tab) */
+
+.slide a
+{
+	color: inherit;
+	text-decoration: none;
+	border-bottom: 2px solid color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.slide a.g
+{
+	color: var(--accent);
+}
+
+.slide a:hover
+{
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+/* a station's resources: links for the deck online, a pointer on stage */
+
+.read-more
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 10px 30px;
+	margin: 44px 0 0;
+	font-family: var(--mono);
+	font-size: 20px;
+	letter-spacing: .03em;
+}
+
+.read-more b
+{
+	font-weight: 400;
+	letter-spacing: .22em;
+	color: var(--cyan);
+	text-transform: uppercase;
+}
+
+.read-more a
+{
+	color: var(--text);
+	text-decoration: none;
+	border-bottom: 1px solid var(--border);
+}
+
+.read-more a:hover
+{
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+/* a sequence diagram: lanes, lifelines, messages, step by step */
+
+svg.sequence
+{
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 28px 0 0;
+}
+
+svg.sequence .seq-box
+{
+	fill: var(--panel);
+	stroke: var(--border);
+	stroke-width: 2;
+}
+
+svg.sequence .seq-box.redis
+{
+	stroke: var(--cyan);
+}
+
+svg.sequence .seq-lane
+{
+	fill: var(--text);
+	font-family: var(--display);
+	font-size: 24px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-anchor: middle;
+	text-transform: uppercase;
+}
+
+svg.sequence .seq-life
+{
+	stroke: var(--border);
+	stroke-width: 2;
+	stroke-dasharray: 6 8;
+}
+
+svg.sequence .seq-arrow
+{
+	stroke: var(--muted);
+	stroke-width: 3;
+}
+
+svg.sequence .seq-arrow.good
+{
+	stroke: var(--good);
+}
+
+svg.sequence .seq-tip
+{
+	fill: var(--muted);
+}
+
+svg.sequence .seq-tip.good
+{
+	fill: var(--good);
+}
+
+svg.sequence .seq-cmd
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 21px;
+	text-anchor: middle;
+}
+
+svg.sequence .seq-say
+{
+	fill: var(--muted);
+	font-family: var(--display);
+	font-size: 24px;
+	font-weight: 500;
+	text-anchor: middle;
+}
+
+svg.sequence .seq-say.left
+{
+	text-anchor: start;
+}
+
+svg.sequence .seq-say.strong
+{
+	fill: var(--accent);
+	font-size: 30px;
+	font-weight: 700;
+}
+
+svg.sequence .seq-note
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .04em;
+	text-anchor: middle;
+}
+
+svg.sequence .seq-lock
+{
+	fill: var(--panel);
+	stroke: var(--accent);
+	stroke-width: 2;
+}
+
+svg.sequence .seq-lock-label
+{
+	fill: var(--accent);
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .2em;
+	text-anchor: middle;
+	text-transform: uppercase;
+}
+
+svg.sequence .seq-wait
+{
+	fill: var(--yellow);
+	opacity: .55;
+}
+
+svg.sequence .seq-work
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 6px var(--red-glow));
+}
+
+/* a heading or a statement on two lines: split evenly, never one word alone on the second */
+
+h2,
+.claim,
+.teaser,
+.statement
+{
+	text-wrap: balance;
+}
+
+/* a chart's axis titles: what the time runs along, what the height means */
+
+svg .axis-title
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 17px;
+	letter-spacing: .04em;
+	text-anchor: end;
+	opacity: .8;
+}
+
+svg .axis-title.vertical
+{
+	text-anchor: middle;
+}
+
+/* ?audit: the line content stays above (--safe: the bottom of the screen may hang behind the room) */
+
+.slide > .safe-line
+{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: var(--safe);
+	z-index: 20;
+	border-top: 2px dashed var(--red);
+	pointer-events: none;
+}
+
+/* the full circle (deck/ring.js): codesafe's ring, the site's motion, the deck's tokens.
+   Motion is CSS (offset-path), so prefers-reduced-motion and print can stop it */
+
+svg.ring
+{
+	display: block;
+	overflow: visible;
+}
+
+svg.ring .ring-track
+{
+	fill: none;
+	stroke: var(--border);
+	stroke-width: 2;
+}
+
+svg.ring .ring-arc
+{
+	fill: none;
+	stroke: var(--accent);
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-dasharray: 9 11;
+	animation: ring-drift 1.6s linear infinite;
+}
+
+svg.ring .ring-arc.fix
+{
+	stroke: var(--yellow);
+}
+
+svg.ring .ring-arc.close
+{
+	stroke: var(--good);
+	animation-duration: 2.4s;
+}
+
+/* the Shield's lane drifts twice as fast as the ring: minutes against a release */
+svg.ring .ring-arc.shield
+{
+	stroke: var(--violet);
+	animation-duration: .8s;
+}
+
+svg.ring .ring-tip
+{
+	fill: var(--accent);
+}
+
+svg.ring .ring-tip.fix
+{
+	fill: var(--yellow);
+}
+
+svg.ring .ring-tip.close
+{
+	fill: var(--good);
+}
+
+svg.ring .ring-tip.shield
+{
+	fill: var(--violet);
+}
+
+@keyframes ring-drift
+{
+	to
+	{
+		stroke-dashoffset: -20;
+	}
+}
+
+svg.ring .ring-stop circle,
+svg.ring .ring-stop.shield path
+{
+	fill: var(--panel-2);
+	stroke: var(--accent);
+	stroke-width: 2;
+	transition: opacity .3s ease;
+}
+
+svg.ring .ring-stop.fix circle
+{
+	stroke: var(--yellow);
+}
+
+svg.ring .ring-stop.close circle
+{
+	stroke: var(--good);
+}
+
+svg.ring .ring-stop.shield path
+{
+	stroke: var(--violet);
+	stroke-linejoin: round;
+}
+
+svg.ring .ring-stop.shield .rim
+{
+	fill: none;
+	stroke-width: 1.5;
+	opacity: .45;
+}
+
+svg.ring .ring-stop text
+{
+	fill: var(--text);
+	font-family: var(--display);
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-anchor: middle;
+}
+
+svg.ring .ring-stop text.n
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: .12em;
+}
+
+svg.ring .ring-hub
+{
+	fill: var(--muted);
+	font-family: var(--display);
+	font-size: 20px;
+	letter-spacing: .22em;
+	text-anchor: middle;
+}
+
+svg.ring .ring-hub.small
+{
+	font-family: var(--mono);
+	font-size: 14px;
+	letter-spacing: .04em;
+}
+
+/* a ring with data-lit: the stops it names stand out, the others step back */
+svg.ring.lit .ring-stop,
+svg.ring.lit .ring-lane.dim .ring-arc
+{
+	opacity: .28;
+}
+
+svg.ring.lit .ring-stop.on
+{
+	opacity: 1;
+}
+
+svg.ring.lit .ring-stop.on circle,
+svg.ring.lit .ring-stop.on path:not(.rim)
+{
+	stroke-width: 4;
+	filter: drop-shadow(0 0 12px var(--accent-glow));
+}
+
+/* the pulses run the ring once every 9 s, and change colour under a stop: the accent to ADVISE,
+   yellow to VERIFY, green back to IDENTIFY */
+svg.ring .ring-pulse
+{
+	offset-path: path("M 360 75 A 225 225 0 1 1 360 525 A 225 225 0 1 1 360 75");
+	animation: ring-orbit 9s linear infinite, ring-ink 9s linear infinite;
+	color: var(--accent);
+	fill: currentColor;
+	filter: drop-shadow(0 0 6px currentColor);
+}
+
+svg.ring .ring-pulse.p2
+{
+	opacity: .55;
+	animation-delay: -.45s;
+}
+
+svg.ring .ring-pulse.p3
+{
+	opacity: .3;
+	animation-delay: -.9s;
+}
+
+/* the lane's pulses, centre to centre: the stops drawn over them hide their ends */
+svg.ring .ring-pulse.lane
+{
+	offset-path: path("M 554.9 412.5 A 423.6 423.6 0 0 0 165.1 412.5");
+	animation-name: ring-orbit;
+	animation-duration: 2.58s;
+	color: var(--violet);
+}
+
+@keyframes ring-orbit
+{
+	from
+	{
+		offset-distance: 0%;
+	}
+	to
+	{
+		offset-distance: 100%;
+	}
+}
+
+@keyframes ring-ink
+{
+	0%, 33.3%
+	{
+		color: var(--accent);
+	}
+	33.4%, 66.6%
+	{
+		color: var(--yellow);
+	}
+	66.7%, 100%
+	{
+		color: var(--good);
+	}
+}
+
+/* the ring on its own slide, left, with the words right */
+.ring-slide
+{
+	display: grid;
+	grid-template-columns: 720px 1fr;
+	gap: 70px;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.ring-slide svg.ring
+{
+	width: 720px;
+	height: 720px;
+}
+
+/* the recap beside the ring: one column, a line per station */
+.ring-slide ol.lessons
+{
+	margin: 0;
+	columns: 1;
+	font-size: 31px;
+}
+
+.ring-slide ol.lessons li
+{
+	margin-bottom: 26px;
+}
+
+/* the ring in a slide's corner: where the talk is on the circle */
+svg.ring.corner
+{
+	position: absolute;
+	right: 130px;
+	top: 16px;
+	width: 172px;
+	height: 172px;
+}
+
+svg.ring.corner .ring-hub
+{
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+	svg.ring .ring-arc,
+	svg.ring .ring-pulse
+	{
+		animation: none;
+	}
+	
+	svg.ring .ring-pulse
+	{
+		display: none;
+	}
+}
+
+/* print shows the ring without its motion */
+@media print
+{
+	svg.ring .ring-arc
+	{
+		animation: none;
+	}
+	
+	svg.ring .ring-pulse
+	{
+		display: none;
+	}
+}
+
+/* inline code in a slide's text: a command, a header, a constant */
+
+.slide :is(li, p, td, span, h4, small) > code,
+.slide :is(li, p, td, span, h4, small) code
+{
+	font-family: var(--mono);
+	font-size: .86em;
+	color: var(--accent);
+	letter-spacing: 0;
+}
+
+/* LEARN: who judges a rule. Verdicts fill against one rule; at 2 of a person's, or 3 of a model's,
+   the draft opens */
+
+.judges
+{
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	margin-top: 26px;
+	max-width: 1420px;
+}
+
+.judge-rule
+{
+	position: relative;
+	align-self: flex-start;
+	padding: 18px 28px;
+	border: 2px solid var(--accent);
+	border-radius: 8px;
+	background: var(--panel);
+	font-family: var(--display);
+	font-size: 40px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	color: var(--text);
+	box-shadow: 0 0 34px var(--accent-glow);
+}
+
+.judge-rule small
+{
+	margin-left: 18px;
+	font-family: var(--mono);
+	font-size: 18px;
+	font-weight: 400;
+	color: var(--muted);
+	letter-spacing: .12em;
+}
+
+/* after the row's last verdict: the draft opens */
+.judge-opens
+{
+	align-self: center;
+	white-space: nowrap;
+	margin-left: 10px;
+	padding: 8px 18px;
+	border: 3px solid var(--good);
+	border-radius: 6px;
+	font-family: var(--display);
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	color: var(--good);
+	text-shadow: 0 0 22px var(--good-glow);
+}
+
+.judge-row
+{
+	display: grid;
+	grid-template-columns: 520px 1fr 190px;
+	align-items: center;
+	gap: 28px;
+	padding: 16px 0;
+	border-top: 1px solid var(--border);
+}
+
+.judge-who
+{
+	font-family: var(--display);
+	font-size: 36px;
+	font-weight: 700;
+	color: var(--text);
+}
+
+.judge-who small
+{
+	display: block;
+	margin-top: 4px;
+	font-family: var(--mono);
+	font-size: 19px;
+	font-weight: 400;
+	color: var(--muted);
+}
+
+.judge-cells
+{
+	display: flex;
+	gap: 16px;
+}
+
+.judge-cells .cell
+{
+	min-width: 170px;
+	padding: 12px 16px;
+	border: 2px solid var(--yellow);
+	border-radius: 6px;
+	font-family: var(--mono);
+	font-size: 21px;
+	text-align: center;
+	color: var(--yellow);
+	background: color-mix(in srgb, var(--yellow) 8%, transparent);
+}
+
+.judge-cells .cell.empty
+{
+	border-style: dashed;
+	border-color: var(--border);
+	color: var(--muted);
+	background: none;
+}
+
+.judge-n
+{
+	font-family: var(--mono);
+	font-size: 22px;
+	color: var(--muted);
+}
+
+.judge-n b
+{
+	font-family: var(--display);
+	font-size: 40px;
+	color: var(--accent);
+}
+
+/* LEARN: a proposal, the site's card filled row by row, and what stands behind each row */
+
+.proposal
+{
+	display: grid;
+	grid-template-columns: 760px 1fr;
+	gap: 56px;
+	margin-top: 26px;
+}
+
+.proposal-card
+{
+	border: 2px solid var(--border);
+	border-radius: 8px;
+	background: var(--panel);
+	padding: 22px 30px 26px;
+}
+
+.proposal-head
+{
+	padding-bottom: 14px;
+	border-bottom: 1px solid var(--border);
+	font-family: var(--mono);
+	font-size: 20px;
+	letter-spacing: .1em;
+	color: var(--muted);
+}
+
+.proposal-head .tag
+{
+	margin-left: 12px;
+	padding: 2px 10px;
+	border: 1px solid var(--muted);
+	border-radius: 4px;
+	font-size: 15px;
+}
+
+.proposal-card dl
+{
+	margin: 0;
+}
+
+.proposal-card dl > div
+{
+	display: grid;
+	grid-template-columns: 150px 1fr;
+	gap: 18px;
+	align-items: baseline;
+	padding: 15px 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.proposal-card dt
+{
+	font-family: var(--mono);
+	font-size: 19px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.proposal-card dd
+{
+	margin: 0;
+	font-size: 29px;
+	color: var(--text);
+}
+
+.proposal-card .btn
+{
+	display: inline-block;
+	margin-left: 14px;
+	padding: 4px 14px;
+	border: 2px solid var(--accent);
+	border-radius: 4px;
+	font-family: var(--display);
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: .1em;
+	color: var(--accent);
+}
+
+.proposal-why
+{
+	display: grid;
+	grid-auto-rows: 1fr;
+	margin: 70px 0 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: why;
+}
+
+.proposal-why li
+{
+	position: relative;
+	padding: 0 0 0 44px;
+	font-size: 25px;
+	line-height: 1.3;
+	color: var(--muted);
+	counter-increment: why;
+}
+
+.proposal-why li::before
+{
+	content: counter(why);
+	position: absolute;
+	left: 0;
+	top: 2px;
+	font-family: var(--mono);
+	font-size: 19px;
+	color: var(--accent);
+}
+
+/* a ring with data-tags (deck/ring.js): what decides at a stop, in the place of its number */
+
+svg.ring .ring-stop text.ring-tag
+{
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .04em;
+}
+
+svg.ring .ring-stop text.ring-tag.model
+{
+	fill: var(--accent);
+}
+
+svg.ring .ring-stop text.ring-tag.person
+{
+	fill: var(--yellow);
+}
+
+/* a flow of five: tighter boxes, short arrows without words */
+
+.flow.tight .box
+{
+	min-width: 0;
+	padding: 20px 22px;
+}
+
+.flow.tight .arrow
+{
+	min-width: 56px;
+	padding: 0 6px 30px;
+}
+
+/* marks a text as invented, or a model's answer as written by hand */
+
+.tag-example
+{
+	display: inline-block;
+	margin-left: 12px;
+	padding: 1px 10px;
+	border: 1px solid var(--muted);
+	border-radius: 4px;
+	font-family: var(--mono);
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: .1em;
+	color: var(--muted);
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+/* CLASSIFY: one issue, two verdicts, and the one codesafe acts on */
+
+.issue-card
+{
+	margin-top: 30px;
+	padding: 20px 30px;
+	border: 2px solid var(--border);
+	border-radius: 8px;
+	background: var(--panel);
+	font-family: var(--mono);
+	font-size: 23px;
+	line-height: 1.5;
+	color: var(--muted);
+}
+
+.issue-card .req
+{
+	color: var(--text);
+}
+
+.issue-card mark
+{
+	background: none;
+	color: var(--red);
+	border-bottom: 2px dashed var(--red);
+}
+
+.verdicts
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+	margin-top: 28px;
+}
+
+.verdict
+{
+	padding: 16px 26px;
+	border: 2px solid var(--border);
+	border-radius: 8px;
+	background: var(--panel);
+}
+
+.verdict .who
+{
+	font-family: var(--mono);
+	font-size: 18px;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.verdict .what
+{
+	margin-top: 4px;
+	font-size: 34px;
+	font-weight: 700;
+}
+
+.verdict.screen
+{
+	border-color: var(--red);
+	box-shadow: 0 0 30px var(--red-glow);
+}
+
+.verdict.screen .what
+{
+	color: var(--red);
+}
+
+.verdict.model
+{
+	border-style: dashed;
+}
+
+.verdict.model .what
+{
+	color: var(--muted);
+	text-decoration: line-through;
+}
+
+/* each verdict lands like a stamp */
+
+.verdict.fragment
+{
+	transform: scale(1.3);
+	transition: opacity .12s ease-in, transform .16s cubic-bezier(.6, 0, .9, .4);
+}
+
+.verdict.fragment.shown
+{
+	transform: scale(1);
+}
+
+.verdict-held
+{
+	margin-top: 28px;
+	font-size: 36px;
+	font-weight: 700;
+	color: var(--accent);
+}
+
+.verdict-held small
+{
+	display: block;
+	margin-top: 4px;
+	font-family: var(--mono);
+	font-size: 21px;
+	font-weight: 400;
+	color: var(--muted);
+}
+
+/* the same request asked twice: with the safeguards on, and in the verified workspace */
+
+table.data td.refused
+{
+	color: var(--red);
+}
+
+table.data td.answered
+{
+	color: var(--good);
+}
+
+/* three cards side by side: the test's three requests, a person's and the AI's votes */
+
+.verdicts.three
+{
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.verdict .req
+{
+	margin-top: 10px;
+	font-family: var(--mono);
+	font-size: 22px;
+	color: var(--muted);
+	overflow-wrap: anywhere;
+}
+
+.verdict.good
+{
+	border-color: var(--good);
+	box-shadow: 0 0 30px var(--good-glow);
+}
+
+.verdict.good .what
+{
+	color: var(--good);
+}
+
+.verdict .what.big
+{
+	font-size: 64px;
+	line-height: 1;
+}
+
+/* a question to the model and its answer, as two bubbles */
+
+.chat
+{
+	display: grid;
+	gap: 22px;
+	margin-top: 34px;
+	max-width: 1500px;
+}
+
+.chat .ask,
+.chat .say
+{
+	padding: 18px 28px;
+	border: 2px solid var(--border);
+	border-radius: 14px;
+	background: var(--panel);
+	font-size: 32px;
+	line-height: 1.3;
+}
+
+.chat .ask
+{
+	justify-self: start;
+	border-bottom-left-radius: 2px;
+}
+
+.chat .say
+{
+	justify-self: end;
+	border-color: var(--red);
+	border-bottom-right-radius: 2px;
+	font-family: var(--mono);
+	font-size: 28px;
+	color: var(--red);
+	box-shadow: 0 0 30px var(--red-glow);
+}
+
+.chat .who
+{
+	display: block;
+	margin-bottom: 4px;
+	font-family: var(--mono);
+	font-size: 17px;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+/* a rule said in plain words, big */
+
+.rule-plain
+{
+	padding: 26px 32px;
+	border: 2px solid var(--violet);
+	border-radius: 10px;
+	background: var(--panel);
+	font-size: 44px;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.rule-plain b
+{
+	color: var(--violet);
+}
+
+/* slide 8: an attack code knows beside an error it does not, each with code's verdict and the AI's */
+
+.cases
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+	margin-top: 18px;
+}
+
+.case > .verdict
+{
+	margin-top: 12px;
+}
+
+.case > .issue-card
+{
+	margin-top: 10px;
+	min-height: 116px;
+}
+
+/* two separate paths: a dashed line between them */
+.case
+{
+	position: relative;
+}
+
+.case + .case::before
+{
+	content: '';
+	position: absolute;
+	left: -21px;
+	top: 0;
+	bottom: 0;
+	border-left: 2px dashed var(--border);
+}
+
+.case-label
+{
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.verdict.patch
+{
+	border-color: var(--violet);
+}
+
+.verdict.patch .what
+{
+	color: var(--violet);
+}
+
+/* six ways a rule is born: each card coloured by who writes it */
+
+.verdicts.born
+{
+	row-gap: 34px;
+	margin-top: 50px;
+}
+
+.verdicts.born .what
+{
+	font-size: 36px;
+	line-height: 1.15;
+}
+
+.verdicts.born .req
+{
+	font-size: 24px;
+	text-wrap: pretty;
+}
+
+.verdict.by-ai
+{
+	border-color: var(--violet);
+}
+
+.verdict.by-ai .who
+{
+	color: var(--violet);
+}
+
+.verdict.by-code
+{
+	border-color: var(--accent);
+}
+
+.verdict.by-code .who
+{
+	color: var(--accent);
+}
+
+.verdict.by-person
+{
+	border-color: var(--yellow);
+}
+
+.verdict.by-person .who
+{
+	color: var(--yellow);
+}
+
+/* slide 9 (#watch): six points under the flow, a little closer together */
+
+#watch ul.points
+{
+	margin-top: 32px;
+}
+
+#watch ul.points li
+{
+	margin-bottom: 14px;
+}
+
+/* slide 22 (#helps-ai): what the AI does, and a person only where one is needed */
+
+table.data.helps td.nobody
+{
+	color: var(--muted);
+}
+
+table.data.helps td.person
+{
+	color: var(--yellow);
+}
+
+/* slide 23 (#copy): numbers, not times, in the first column */
+
+#copy ol.sequence li
+{
+	grid-template-columns: 48px 1fr;
+}
+
+/* slide 21 (#inject): the AI's form beside code's filter, a field name or a mark first on each line */
+
+#inject .issue-card
+{
+	margin-top: 16px;
+	padding: 12px 30px;
+}
+
+#inject .issue-card.real
+{
+	margin-top: 22px;
+	border-color: var(--red);
+}
+
+#inject .real-head
+{
+	font-family: var(--display);
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--red);
+}
+
+#inject .verdicts
+{
+	margin-top: 18px;
+}
+
+#inject .verdict .req
+{
+	margin-top: 8px;
+	color: var(--text);
+}
+
+#inject .verdict .req b
+{
+	display: inline-block;
+	min-width: 150px;
+	color: var(--muted);
+	font-weight: 600;
+}
+
+#inject .verdict.by-code .req b
+{
+	min-width: 36px;
+	color: var(--red);
+}
+
+#inject ul.points
+{
+	margin-top: 28px;
+}
+
+/* slide 18 (#promote): three lanes from a new patch to BLOCK, the boxes the same width so the lanes line up */
+
+#promote .flow.lane
+{
+	margin-top: 18px;
+}
+
+#promote .lane-label
+{
+	flex: none;
+	width: 250px;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: .1em;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+#promote .lane-label small
+{
+	display: block;
+	margin-top: 4px;
+	font-family: var(--mono);
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: .04em;
+	color: var(--muted);
+	text-transform: none;
+}
+
+#promote .lane-label.now
+{
+	color: var(--red);
+}
+
+#promote .flow .box
+{
+	flex: none;
+	width: 220px;
+	min-width: 0;
+	padding: 16px 18px;
+	font-size: 25px;
+}
+
+#promote .flow .box.watch,
+#promote .flow .box.skip
+{
+	width: 360px;
+}
+
+#promote .flow .box.block
+{
+	width: 170px;
+}
+
+#promote .flow .box.skip
+{
+	border-style: dashed;
+	color: var(--muted);
+	opacity: .5;
+}
+
+#promote .flow .arrow
+{
+	min-width: 70px;
+}
+
+/* the way back: the same columns, read from the right, its arrows pointing left */
+
+#promote .flow.lane.back
+{
+	margin-top: 30px;
+}
+
+#promote .flow .box.redraft
+{
+	border-color: var(--violet);
+}
+
+#promote .flow .arrow.back::after
+{
+	background: linear-gradient(270deg, var(--border), var(--muted));
+}
+
+#promote .flow .arrow.back::before
+{
+	right: auto;
+	left: 8px;
+	border-left: 0;
+	border-right: 12px solid var(--muted);
+}
+
+#promote .flow .arrow.back.bad::after
+{
+	background: linear-gradient(270deg, var(--border), var(--red));
+}
+
+#promote .flow .arrow.back.bad::before
+{
+	border-right-color: var(--red);
+}
+
+#promote ul.points
+{
+	margin-top: 24px;
+	font-size: 32px;
+}
+
+#promote ul.points li
+{
+	margin-bottom: 12px;
+}
+
+/* the overview: the talk alone; a backup shows only when the overview was opened on one */
+
+body.overview .slide.overview-out
+{
+	display: none;
+}
+
+/* slide 6 (#blocks): the two automatic blocks, drawn and moved by CSS alone. Each caption (li.b1 to
+   li.b5) changes the stage through :has(), so the arrow keys drive it like any fragment */
+
+#blocks .blk-stage
+{
+	position: relative;
+	height: 400px;
+	margin-top: 34px;
+	font-family: var(--display);
+}
+
+#blocks .blk-site,
+#blocks .blk-shield,
+#blocks .blk-plugin,
+#blocks .blk-cs,
+#blocks .blk-sender,
+#blocks .blk-tile
+{
+	position: absolute;
+	border: 2px solid var(--border);
+	border-radius: 10px;
+	background: var(--panel);
+}
+
+#blocks .blk-site
+{
+	left: 900px;
+	top: 0;
+	width: 740px;
+	height: 290px;
+	background: var(--panel-2);
+}
+
+#blocks .blk-label
+{
+	position: absolute;
+	left: 16px;
+	top: 8px;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+#blocks .blk-shield
+{
+	left: 930px;
+	top: 40px;
+	width: 300px;
+	height: 230px;
+	border-color: var(--violet);
+}
+
+#blocks .blk-shield .blk-label
+{
+	top: auto;
+	bottom: 8px;
+	color: var(--violet);
+}
+
+#blocks .blk-plugin
+{
+	left: 1270px;
+	top: 40px;
+	width: 340px;
+	height: 230px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	font-weight: 600;
+}
+
+#blocks .blk-plugin small,
+#blocks .blk-cs small,
+#blocks .blk-sender small
+{
+	display: block;
+	font-size: 20px;
+	font-weight: 500;
+	color: var(--muted);
+}
+
+#blocks .blk-cve
+{
+	margin-top: 12px;
+	padding: 2px 12px;
+	border: 2px solid var(--red);
+	border-radius: 6px;
+	font-family: var(--mono);
+	font-size: 18px;
+	color: var(--red);
+	opacity: 0;
+	transition: opacity .4s ease;
+}
+
+#blocks .blk-sender
+{
+	left: 0;
+	width: 230px;
+	padding: 8px 16px;
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.15;
+}
+
+#blocks .blk-sender.visitor
+{
+	top: 55px;
+	border-color: var(--good);
+}
+
+#blocks .blk-sender.attacker
+{
+	top: 178px;
+	border-color: var(--red);
+}
+
+#blocks .blk-sender.attacker small
+{
+	font-family: var(--mono);
+	color: var(--red);
+}
+
+#blocks .blk-lane
+{
+	position: absolute;
+	left: 240px;
+	width: 690px;
+	border-top: 2px dashed var(--border);
+}
+
+#blocks .blk-lane.visitor
+{
+	top: 80px;
+}
+
+#blocks .blk-lane.attacker
+{
+	top: 215px;
+}
+
+#blocks .blk-cs
+{
+	left: 360px;
+	top: 320px;
+	width: 400px;
+	padding: 6px 16px;
+	border-color: var(--accent);
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.1;
+	color: var(--accent);
+}
+
+/* codesafe's wires: along the bottom to the other websites, and round the corner up to the first one's Shield */
+#blocks .blk-wire
+{
+	position: absolute;
+	border: 0 dashed var(--accent);
+	opacity: .6;
+}
+
+#blocks .blk-wire.row
+{
+	left: 760px;
+	top: 352px;
+	width: 140px;
+	border-top-width: 2px;
+}
+
+#blocks .blk-wire.up
+{
+	left: 878px;
+	top: 250px;
+	height: 102px;
+	border-left-width: 2px;
+}
+
+#blocks .blk-wire.in
+{
+	left: 878px;
+	top: 250px;
+	width: 52px;
+	border-top-width: 2px;
+}
+
+#blocks .blk-tile
+{
+	top: 320px;
+	width: 236px;
+	height: 64px;
+	background: var(--panel-2);
+	transition: border-color .4s ease;
+}
+
+#blocks .blk-tile.t2
+{
+	left: 900px;
+}
+
+#blocks .blk-tile.t3
+{
+	left: 1152px;
+}
+
+#blocks .blk-tile.t4
+{
+	left: 1404px;
+}
+
+#blocks .blk-tile .blk-label
+{
+	top: 6px;
+	font-size: 15px;
+}
+
+#blocks .blk-send
+{
+	position: absolute;
+	left: 752px;
+	top: 344px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: var(--violet);
+	box-shadow: 0 0 14px var(--violet);
+	opacity: 0;
+}
+
+#blocks .blk-chip
+{
+	position: absolute;
+	left: 950px;
+	width: 260px;
+	padding: 6px 12px;
+	border: 2px solid var(--violet);
+	border-radius: 8px;
+	background: var(--panel-2);
+	font-family: var(--mono);
+	font-size: 22px;
+	text-align: center;
+	color: var(--violet);
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity .4s ease .7s, transform .4s ease .7s;
+}
+
+#blocks .blk-chip.patch
+{
+	top: 108px;
+}
+
+#blocks .blk-chip.addr
+{
+	top: 160px;
+}
+
+#blocks .blk-tile .blk-chip
+{
+	left: 14px;
+	bottom: 6px;
+	width: auto;
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+#blocks .blk-tile.t3 .blk-chip
+{
+	transition-delay: .85s;
+}
+
+#blocks .blk-tile.t4 .blk-chip
+{
+	transition-delay: 1s;
+}
+
+#blocks .blk-packet
+{
+	position: absolute;
+	z-index: 2;
+	padding: 6px 14px;
+	border: 2px solid var(--good);
+	border-radius: 8px;
+	background: var(--panel);
+	font-family: var(--mono);
+	font-size: 22px;
+	white-space: nowrap;
+	color: var(--good);
+	transform: translate(-100%, -50%);
+	opacity: 0;
+}
+
+#blocks .blk-packet.visitor
+{
+	--from: 420px;
+	--to: 1590px;
+	top: 80px;
+	animation: blk-pass 3.4s linear -1.4s infinite;
+}
+
+#blocks .blk-packet.exploit
+{
+	--from: 610px;
+	top: 215px;
+	border-color: var(--red);
+	color: var(--red);
+}
+
+#blocks .blk-packet.plain
+{
+	--from: 440px;
+	top: 215px;
+	border-color: var(--muted);
+	color: var(--text);
+}
+
+#blocks .blk-stamp
+{
+	position: absolute;
+	left: 560px;
+	top: 140px;
+	width: 320px;
+	font-family: var(--mono);
+	font-size: 24px;
+	font-weight: 700;
+	text-align: right;
+	color: var(--red);
+	text-shadow: 0 0 12px var(--red-glow);
+	opacity: 0;
+}
+
+/* the beats */
+
+#blocks:has(li.b1.shown) .blk-chip.patch,
+#blocks:has(li.b3.shown) .blk-chip.addr,
+#blocks:has(li.b5.shown) .blk-tile .blk-chip
+{
+	opacity: 1;
+	transform: none;
+}
+
+/* website 2 saw an exploit from the address too: the second project's word */
+#blocks:has(li.b5.shown) .blk-tile.t2
+{
+	border-color: var(--red);
+}
+
+#blocks:has(li.b1.shown) .blk-cve
+{
+	opacity: 1;
+}
+
+#blocks:has(li.b1.shown) .blk-send.s1,
+#blocks:has(li.b3.shown) .blk-send.s3
+{
+	animation: blk-send .8s ease-in-out 1 forwards;
+}
+
+#blocks:has(li.b5.shown) .blk-send.s5
+{
+	animation: blk-send-row .6s ease-in-out 1 forwards;
+}
+
+#blocks:has(li.b2.shown) .blk-packet.exploit,
+#blocks:has(li.b4.shown) .blk-packet.plain
+{
+	animation: blk-stop 3.4s linear infinite;
+}
+
+#blocks:has(li.b2.shown) .blk-stamp.patch,
+#blocks:has(li.b4.shown) .blk-stamp.addr
+{
+	animation: blk-stamp 3.4s linear infinite;
+}
+
+/* once the address is on the list, everything it sends stops there: the exploit's lane is the plain request's */
+#blocks:has(li.b4.shown) .blk-packet.exploit,
+#blocks:has(li.b4.shown) .blk-stamp.patch
+{
+	animation: none;
+	opacity: 0;
+}
+
+#blocks ul.points
+{
+	margin-top: 30px;
+	font-size: 32px;
+}
+
+#blocks ul.points li
+{
+	margin-bottom: 10px;
+}
+
+@keyframes blk-pass
+{
+	0%
+	{
+		left: var(--from);
+		opacity: 0;
+	}
+
+	8%
+	{
+		opacity: 1;
+	}
+
+	75%
+	{
+		left: var(--to);
+		opacity: 1;
+	}
+
+	90%,
+	100%
+	{
+		left: var(--to);
+		opacity: 0;
+	}
+}
+
+@keyframes blk-stop
+{
+	0%
+	{
+		left: var(--from);
+		opacity: 0;
+	}
+
+	8%
+	{
+		opacity: 1;
+	}
+
+	45%
+	{
+		left: 928px;
+	}
+
+	52%,
+	80%
+	{
+		left: 904px;
+		opacity: 1;
+	}
+
+	92%,
+	100%
+	{
+		left: 904px;
+		opacity: 0;
+	}
+}
+
+/* letter-spacing, not a scale: the stamp snaps shut, and the animation stays on the main thread, where
+   a headless screenshot's virtual clock moves it too */
+@keyframes blk-stamp
+{
+	0%,
+	44%
+	{
+		opacity: 0;
+		letter-spacing: .3em;
+	}
+
+	52%,
+	80%
+	{
+		opacity: 1;
+		letter-spacing: 0;
+	}
+
+	92%,
+	100%
+	{
+		opacity: 0;
+		letter-spacing: 0;
+	}
+}
+
+/* a rule on its way: along the bottom, up the corner, into the first website's Shield */
+@keyframes blk-send
+{
+	0%
+	{
+		left: 752px;
+		top: 344px;
+		opacity: 1;
+	}
+
+	35%
+	{
+		left: 870px;
+		top: 344px;
+	}
+
+	75%
+	{
+		left: 870px;
+		top: 242px;
+	}
+
+	92%
+	{
+		left: 922px;
+		top: 242px;
+		opacity: 1;
+	}
+
+	100%
+	{
+		left: 922px;
+		top: 242px;
+		opacity: 0;
+	}
+}
+
+/* the shared list on its way to the other websites */
+@keyframes blk-send-row
+{
+	0%
+	{
+		left: 752px;
+		opacity: 1;
+	}
+
+	85%
+	{
+		left: 892px;
+		opacity: 1;
+	}
+
+	100%
+	{
+		left: 892px;
+		opacity: 0;
+	}
+}
+
+/* still: every request where it ends, the stamp beside the one stopped */
+@media (prefers-reduced-motion: reduce)
+{
+	#blocks .blk-packet,
+	#blocks .blk-stamp,
+	#blocks .blk-send
+	{
+		animation: none !important;
+	}
+
+	#blocks .blk-packet.visitor
+	{
+		left: 1590px;
+		opacity: 1;
+	}
+
+	#blocks:has(li.b2.shown) .blk-packet.exploit,
+	#blocks:has(li.b4.shown) .blk-packet.plain
+	{
+		left: 904px;
+		opacity: 1;
+	}
+
+	#blocks:has(li.b2.shown) .blk-stamp.patch,
+	#blocks:has(li.b4.shown) .blk-stamp.addr
+	{
+		opacity: 1;
+	}
+
+	#blocks:has(li.b4.shown) .blk-packet.exploit,
+	#blocks:has(li.b4.shown) .blk-stamp.patch
+	{
+		opacity: 0;
+	}
+
+	#blocks .blk-chip,
+	#blocks .blk-tile
+	{
+		transition: none;
+	}
+}

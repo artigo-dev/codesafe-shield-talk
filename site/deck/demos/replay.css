@@ -1,0 +1,248 @@
+/* Demo B, `replay` (demos/replay.js): only what the shared chart vocabulary (deck.css) lacks.
+   Red the exploit, green the honest request, violet the kernel's bar, yellow what it observed. */
+
+.demo[data-demo="replay"] svg .lane-label
+{
+	fill: var(--good);
+	font-family: var(--mono);
+	letter-spacing: .02em;
+	text-anchor: end;
+}
+
+.demo[data-demo="replay"] svg .lane-label.attacker
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="replay"] svg .edge-label,
+.demo[data-demo="replay"] svg .clock-label
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 14px;
+	letter-spacing: .06em;
+}
+
+.demo[data-demo="replay"] svg .edge-label.strong
+{
+	fill: var(--text);
+	font-size: 15px;
+}
+
+.demo[data-demo="replay"] svg .middle
+{
+	text-anchor: middle;
+}
+
+.demo[data-demo="replay"] svg .end
+{
+	text-anchor: end;
+}
+
+.demo[data-demo="replay"] svg .app-edge
+{
+	stroke: var(--muted);
+	stroke-width: 2;
+	stroke-dasharray: 4 5;
+	opacity: .7;
+}
+
+.demo[data-demo="replay"] svg .kernel
+{
+	fill: var(--violet);
+	opacity: .8;
+	transition: opacity .2s;
+}
+
+.demo[data-demo="replay"] svg .kernel.flash
+{
+	opacity: 1;
+	filter: drop-shadow(0 0 10px var(--violet));
+}
+
+.demo[data-demo="replay"] svg .dot.exploit
+{
+	fill: var(--red);
+	filter: drop-shadow(0 0 4px var(--red-glow));
+}
+
+.demo[data-demo="replay"] svg .dot.honest
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="replay"] svg .observed
+{
+	stroke: var(--yellow);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+
+.demo[data-demo="replay"] svg .refused-mark
+{
+	fill: none;
+	stroke: var(--red);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+
+.demo[data-demo="replay"] svg .clock-track
+{
+	stroke: var(--border);
+	stroke-width: 2;
+}
+
+.demo[data-demo="replay"] svg .clock-hand
+{
+	fill: var(--accent);
+}
+
+/* the lines under the panels: muted words, the numbers in their colours */
+
+.demo[data-demo="replay"] svg .strip
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 17px;
+}
+
+.demo[data-demo="replay"] svg .strip.k,
+.demo[data-demo="replay"] svg .strip .k
+{
+	fill: var(--muted);
+}
+
+.demo[data-demo="replay"] svg .strip .v
+{
+	font-weight: 700;
+}
+
+.demo[data-demo="replay"] svg .strip .v.bad
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="replay"] svg .strip .v.good
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="replay"] svg .strip .v.warn
+{
+	fill: var(--yellow);
+}
+
+/* the trial card */
+
+.demo[data-demo="replay"] svg .draft-title
+{
+	fill: var(--text);
+	font-family: var(--display);
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="replay"] svg .cond,
+.demo[data-demo="replay"] svg .subject
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 15px;
+}
+
+.demo[data-demo="replay"] svg .cell
+{
+	fill: var(--panel);
+	stroke: var(--border);
+	stroke-width: 1.5;
+}
+
+.demo[data-demo="replay"] svg .cell.good
+{
+	stroke: var(--good);
+}
+
+.demo[data-demo="replay"] svg .cell.bad
+{
+	stroke: var(--red);
+	stroke-width: 2.5;
+}
+
+.demo[data-demo="replay"] svg .cell-text,
+.demo[data-demo="replay"] svg .draft-verdict
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 15px;
+}
+
+.demo[data-demo="replay"] svg .cell-text
+{
+	text-anchor: middle;
+}
+
+.demo[data-demo="replay"] svg .cell-text.good,
+.demo[data-demo="replay"] svg .draft-verdict.good
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="replay"] svg .cell-text.bad,
+.demo[data-demo="replay"] svg .draft-verdict.bad
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="replay"] svg .strike
+{
+	stroke: var(--red);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+
+/* the promotion's conditions */
+
+.demo[data-demo="replay"] svg .check-title
+{
+	fill: var(--muted);
+	font-family: var(--mono);
+	font-size: 15px;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.demo[data-demo="replay"] svg .check,
+.demo[data-demo="replay"] svg .check-verdict
+{
+	fill: var(--text);
+	font-family: var(--mono);
+	font-size: 17px;
+}
+
+.demo[data-demo="replay"] svg .check .mark.ok
+{
+	fill: var(--good);
+}
+
+.demo[data-demo="replay"] svg .check .mark.no
+{
+	fill: var(--red);
+}
+
+.demo[data-demo="replay"] svg .check-verdict
+{
+	fill: var(--violet);
+	font-weight: 700;
+}
+
+.demo[data-demo="replay"] svg .check-verdict.held
+{
+	fill: var(--yellow);
+}
+
+.demo[data-demo="replay"] svg .stamp-v.idle
+{
+	fill: var(--muted);
+}
