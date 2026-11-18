@@ -214,7 +214,7 @@
 			<div class="box bad block">block</div>
 		</div>
 		<div class="flow lane fragment">
-			<div class="lane-label">fast<small>2 hours or more</small></div>
+			<div class="lane-label">fast<small>2 hours, or sooner</small></div>
 			<div class="box">a new patch</div>
 			<div class="arrow"></div>
 			<div class="box slow watch">watch<small>until 20 normal requests passed</small></div>
@@ -239,7 +239,7 @@
 		</div>
 		<ul class="points">
 			<li class="fragment">Both watch paths, on every site with the plugin: the rule is there, the traffic is counted, every match was an attacker.</li>
-			<li class="fragment">While it watches, an exploit the site answers is raised as urgent.</li>
+			<li class="fragment">An exploit the site answers while a CVE patch watches is urgent, and the wait ends: 20 normal requests are enough.</li>
 			<li class="fragment bad">One retry only: if the narrower rule also refuses visitors, a person decides.</li>
 		</ul>
 		<aside class="notes">
@@ -248,10 +248,10 @@
 			<p>Fast. The patch watches first. Once 20 normal requests have passed it untouched, and at least two hours have gone by, it blocks.</p>
 			<p>Normal. Some pages are quiet. If a whole day passes and no normal request comes at all, there is nothing to break, so it blocks.</p>
 			<p>For both watching paths, every website with the plugin must have the rule and count its traffic, and everything the rule matched must have come from an attacker. A match from a regular visitor or a signed-in user keeps it watching.</p>
-			<p>While a patch watches, an exploit can get through: on purpose, because a wrong block turns away every visitor of that page. If the site answers an exploit while its rule only watches, codesafe raises it as urgent at once, and the attacker's address is refused after its second exploit anyway.</p>
-			<p>And the way back, the bottom row, read from the right. If a blocking rule turns regular visitors away, it goes back to watching by itself. Ten minutes later the AI drafts it again, and the visitors it refused become requests the new rule must let through. The narrower rule replaces it and takes the paths above again.</p>
+			<p>While a patch watches, an exploit can get through: on purpose, because a wrong block turns away every visitor of that page. If the site answers an exploit while a CVE patch only watches, two things happen. codesafe raises it as urgent at once. And the patch stops waiting out the clock: an exploit that got through is the best proof the patch is needed, so a site that has seen its 20 normal requests pass no longer waits for the two hours. The attacker's address is refused after its second exploit anyway.</p>
+			<p>And the way back, the bottom row, read from the right. If a blocking rule turns regular visitors away, it goes back to watching by itself. Ten minutes later the AI drafts it again, and the visitors it refused become requests the new rule must let through. For a CVE patch, every exploit a site answered earlier stays a request it must still block: narrower, but not blind. The narrower rule replaces it and takes the paths above again.</p>
 			<p>The AI gets one retry. If the narrower rule turns regular visitors away too, codesafe neither sets it back nor drafts it again: it raises an urgent case, and a person decides. Failing twice means the AI read the hole wrong; retrying would only swing between blocking visitors and drafting again. And if the refused requests look like something an attacker could fake, fresh addresses, signed-in users or addresses in good standing, it goes straight to a person, even the first time.</p>
-			<p><b>Only if asked:</b> every carrier must have pulled the rule for the whole window and within the last hour, and its heartbeat must cover 95 % of its requests; every match must come from an address with attack history or carry an exploit's shape. A signed-in, address-less or good-standing match holds the rule when such matches come from two addresses or a day apart. A patch only one of the two answers kept gets no 2 h lane: it watches 24 h. A patch from an error is never immediate: it watches first. The way back trips when, within 10 minutes, at least 20 distinct addresses were refused and 30 % of them were clients the sites knew before the rule, out of at least 100 clients; signals an attacker could produce (fresh addresses, a signed-in refusal, addresses in good standing) page a person instead. The redraft comes 10 minutes after the set-back; a CVE successor is born blocking only when it earns the "sure" check and spares every refused request, an error's successor watches; at most 2 paid attempts per vulnerability or issue, 5 a day per instance.</p>
+			<p><b>Only if asked:</b> every carrier must have pulled the rule for the whole window and within the last hour, and its heartbeat must cover 95 % of its requests; every match must come from an address with attack history or carry an exploit's shape. A signed-in, address-less or good-standing match holds the rule when such matches come from two addresses or a day apart. A patch only one of the two answers kept gets no 2 h lane: it watches 24 h, unless a site answered an exploit. A patch from an error is never immediate and never ends its wait early: it watches first. The early end: "answered" means a 2xx from the code that handles the request, not the site's error page, for a request with an exploit's shape, from an address that can be scored, not a browser sent from another site, not codesafe's own replay. Each site needs its own 20 normal requests; a site that has not seen them, the one that reported the exploit included, still waits its hours, so one project's report shortens no other site's wait. A quiet page has no normal requests, so it still waits 24 h. A patch on code every request runs never ends its wait early, and once the way back set a rule of the vulnerability back, none of its rules does: the alarm would not undo that block. The exploits kept for the redraft: at most 12 per vulnerability, one per address and shape, gone with their event. The way back trips when, within 10 minutes, at least 20 distinct addresses were refused and 30 % of them were clients the sites knew before the rule, out of at least 100 clients; signals an attacker could produce (fresh addresses, a signed-in refusal, addresses in good standing) page a person instead. The redraft comes 10 minutes after the set-back; a CVE successor is born blocking only when it earns the "sure" check and spares every refused request, an error's successor watches; at most 2 paid attempts per vulnerability or issue, 5 a day per instance.</p>
 		</aside>
 	</section>
 
@@ -383,10 +383,13 @@ function acme_export() {
 			<div class="verdict good fragment"><div class="who">the attack, made harmless</div><div class="what">must pass</div><div class="req">file=1</div></div>
 		</div>
 		<p class="claim fragment">Code runs the test on the websites' own Shield. The AI doesn't judge its own rule.</p>
+		<p class="claim fragment">While the patch only watches, attacks get through. An attack it recognised becomes a test: every new version of the patch must block it.</p>
 		<aside class="notes">
 			<p>The third request is the clever one: the attack with its dangerous value replaced by something harmless. A lazy rule like "block when the file parameter is there" blocks it too, and fails. That catches the rule before a website does.</p>
 			<p>The judge is not an AI and not a copy: it is the same function the Shield runs on every website.</p>
 			<p>The AI writes the attack requests, so code adds what it can't influence: the harmless twin of every attack, other spellings of it, and stored traffic. The verdict is the kernel's.</p>
+			<p><b>Say, on the last line:</b> and the tests grow from real traffic. A patch that only watches never stops an attack: it recognises it, reports it, and the site answers it. codesafe keeps that request. Every later rule for that vulnerability, the nightly draft or a redraft after the way back, must block it too. A rule that misses it is repaired or drafted again before any site gets it.</p>
+			<p><b>Only if asked:</b> at most 12 per vulnerability, one per address and shape. codesafe keeps a pointer to the stored event, never a copy, so the request is as scrubbed as the event and goes when the event goes. A rule already blocking is never changed by it; a rule still watching is checked against it again and can be held from blocking. The trade-off: anyone whose exploit a site answered adds a test for that vulnerability on every project, until the event expires; the test can only demand that a rule block more, never less.</p>
 		</aside>
 	</section>
 
@@ -999,7 +1002,7 @@ function acme_export() {
 		</div>
 		<aside class="notes">
 			<p>The rule from the last demo, on the websites. No rule: the exploit reaches the application. Then the rule only watches: every exploit is reported, nothing is blocked, and the websites count their traffic. When the numbers say it is safe, the rule switches to blocking, and the same attack wave runs again: every exploit blocked, no normal visitor blocked.</p>
-			<p>If asked why the exploits get through while the rule watches: a rule that blocks normal visitors breaks the site for all of them, and only live traffic can prove it does not. So the first exploits are let through on purpose, but the watch is short, the attacker's address is refused after two, and an exploit the site answers while its rule watches is raised as urgent (slide 8).</p>
+			<p>If asked why the exploits get through while the rule watches: a rule that blocks normal visitors breaks the site for all of them, and only live traffic can prove it does not. So the first exploits are let through on purpose, but the watch is short, the attacker's address is refused after two, and an exploit the site answers while its rule watches is raised as urgent and ends the wait (slide 8).</p>
 			<p>The decisions are the real Shield's; the websites and the clock are the demo's.</p>
 		</aside>
 	</section>
